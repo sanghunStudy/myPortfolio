@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- mybatis dtd 검색후 복사 -->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration> <!-- 환경설정 -->
+		<!-- 카멜표현식으로 작성한 모델의 필드값을 마이바티스에 있는 케밥 표현식으로 바꿔준다. -->
+		<settings>
+			<setting name="mapUnderscoreToCamelCase" value="true"/>
+		</settings>
+		
+	
+	<typeAliases>
+		<typeAlias type="kr.ac.kopo.model.Board" alias="Board"/>
+	</typeAliases>
+
+	<mappers><!-- 마이바티스 폴더 안에 User.xml로 연결 -->
+	<mapper resource="mybatis/board.xml"/>
+	</mappers>
+</configuration>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- sql문이 모여있는 맵퍼 파일  mybatis-config.xml에서 설정한Book클래스를 이용해서 사용한다. -->
+
+<mapper namespace="board"><!-- DaoImpl에서 사용된다 예)board.list -->
+	
+	
+</mapper>
