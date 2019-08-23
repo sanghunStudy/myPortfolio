@@ -17,7 +17,7 @@
 	 <c:when test="${list.size() > 0 }">
 	 	<c:forEach var="item" items="${list}">
 	 		${item.bNo}
-	 		${item.bTitle}
+	 		<a href="${pageContext.request.contextPath}/portFolio/view?bNo=${item.bNo}">${item.bTitle}</a>
 	 		${item.bWriter}
 	 	</c:forEach>
 	 </c:when>

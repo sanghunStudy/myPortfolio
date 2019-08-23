@@ -38,8 +38,8 @@ public class PortFolioDaoImpl implements PortFolioDao {
 	}
 	//포트폴리오 삭제
 	@Override
-	public void delete(int bNo) {
-		sql.update("board.delete", bNo);
+	public void delete(Board board) {
+		sql.update("board.delete", board);
 	}
 
 }

@@ -45,16 +45,27 @@ public class PortFolioController {
 		model.addAttribute("viewItem", viewItem);
 		return path+"view";
 	}
+	//포트폴리오 수정화면
+	@RequestMapping(value="/update", method = RequestMethod.GET)
+	public String portFolioUpdate(Model model, int bNo) {
+		
+		Board updateItem = service.view(bNo);
+		
+		model.addAttribute("updateItem", updateItem);
+		return path+"update";
+	}
 	//포트폴리오 수정처리
 	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public String portFolioUpdate(Board board) {
+		board.setbUpdateWriter("test222");//세션의 아이디값 넣어줘야함
 		service.update(board);
 		return "redirect:list";
 	}
 	//포트폴리오 삭제
 	@RequestMapping(value="/delete", method = RequestMethod.GET)
-	public String portFolioDelete(int bNo) {
-		service.delete(bNo);
+	public String portFolioDelete(Board board) {
+		board.setbUpdateWriter("test222");//세션의 아이디값 넣어줘야함
+		service.delete(board);
 		return path+"list";
 	}
 }

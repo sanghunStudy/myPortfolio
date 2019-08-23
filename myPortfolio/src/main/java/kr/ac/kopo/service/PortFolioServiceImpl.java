@@ -36,8 +36,8 @@ public class PortFolioServiceImpl implements PortFolioService {
 	}
 	//포트폴리오 삭제
 	@Override
-	public void delete(int bNo) {
-		dao.delete(bNo);
+	public void delete(Board board) {
+		dao.delete(board);
 	}
 
 }

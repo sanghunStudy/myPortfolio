@@ -14,6 +14,6 @@ public interface PortFolioService {
 	//포트폴리오 수정
 	void update(Board board);
 	//포트폴리오 삭제
-	void delete(int bNo);
+	void delete(Board board);
 
 }
