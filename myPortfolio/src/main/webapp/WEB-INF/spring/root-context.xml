@@ -10,8 +10,8 @@
 <!-- 	오라클 db접속 정보		 -->
    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
       <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-      <property name="url" value="oracle:thin:@127.0.0.1:1521:xe" />
-      <property name="username" value="popstars"/>
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+      <property name="username" value="bsh"/>
       <property name="password" value="1234"/>
    </bean>   
 			

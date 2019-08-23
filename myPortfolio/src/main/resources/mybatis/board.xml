@@ -5,5 +5,42 @@
 
 <mapper namespace="board"><!-- DaoImpl에서 사용된다 예)board.list -->
 	
+<!-- 	포트폴리오 리스트 삭제가 N인것만 가져온다. -->
+	<select id="list" resultType="Board">
+		select b_no,b_title,b_writer,b_contents,b_date from board where b_delete='N' order by b_no desc
+	</select>
 	
+<!-- 	포트폴리오 등록 시퀀스를 이용해서 자동증가 1부터 1씩증가  -->
+	<insert id="add">
+		insert into board(b_no,b_title,b_writer,b_contents,b_date)
+		values(bno_seq.nextval,#{bTitle},#{bWriter},#{bContents},sysdate)
+	</insert>
+	
+<!-- 포트폴리오 조회수 증가 -->
+	<update id="viewCount">
+		update board
+		set b_views = b_views +1
+		where b_no = #{bNo}
+	</update>
+<!-- 	포트폴리오 상세보기 -->
+	<select id="view" resultType="Board">
+		select b_no,b_title,b_writer,b_contents,b_date from board where b_no = #{bNo}
+	</select>
+<!-- 	포트폴리오 수정 -->
+	<update id="update">
+		update board
+		set b_title = #{bTitle},
+		b_contents = #{bContents},
+		b_update_date = sysdate,
+		b_update_writer = #{bWriter}
+		where b_no = #{bNo}
+	</update>
+<!-- 	포트폴리오 삭제 -->
+	<update id="delete">
+		update board
+		set b_delete = 'Y',
+		b_delete_date = sysdate,
+		b_update_writer = #{bWriter}
+		where b_no = #{bNo}
+	</update>
 </mapper>
