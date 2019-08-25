@@ -22,5 +22,6 @@
 		<button type="submit">전송</button>	
 	</form>
 </div>
+<jsp:include page="../gnb/footer.jsp" flush="true" />
 </body>
 </html>

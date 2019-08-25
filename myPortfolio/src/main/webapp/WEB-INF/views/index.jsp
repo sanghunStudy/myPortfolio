@@ -41,7 +41,6 @@
 	.content-section-two{height:25%; background-image:url('${pageContext.request.contextPath}/resources/img/content-2.jpg'); background-repeat:no-repeat; background-position:top center; background-size:cover; background-attachment:fixed;}
 	.content-section-three{height:25%; background-repeat:no-repeat; background-position:bottom center; background-size:cover; background-attachment:fixed;}
 	.content-section-four{height:24%;}
-	.content-footer{color: white; text-align: center; font-size: 0.8em;}
 	.content-title{padding-top: 650px;}
 	.content-title p{font-size:5em; color:#fff; font-weight:680; line-height: 1.6em;}
 	.content-sub-title p{font-size:1.4em; color:#ffff; line-height: 1.5em;}
@@ -119,9 +118,7 @@
 			<div class="content-sub-box">
 			</div>
 			</section>
-			<div class="content-footer">
-			<p>© 2019 Proudly created with bsh</p>
-			</div>
+		<jsp:include page="./gnb/footer.jsp" flush="true" />
 		</article>
 </body>
 </html>

@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <title>포트폴리오 목록</title>
 <style>
-	.portfolio-list-contents-box{width:1024px; padding-top:200px; margin:0 auto;}
+	body{background:black;}
+	.portfolio-list-contents-box{width:1024px; padding-top:200px; margin:0 auto; text-align:center;}
+	.portfolio-list-contents-box div{width:350px; height:350px; margin:30px 30px; display:inline-block; background:#fff;}
 </style>
 </head>
 <jsp:include page="../gnb/nav.jsp" flush="true" />
@@ -16,9 +18,11 @@
 	<c:choose>
 	 <c:when test="${list.size() > 0 }">
 	 	<c:forEach var="item" items="${list}">
-	 		${item.bNo}
-	 		<a href="${pageContext.request.contextPath}/portFolio/view?bNo=${item.bNo}">${item.bTitle}</a>
-	 		${item.bWriter}
+	 		<div>
+		 		${item.bNo}
+		 		<a href="${pageContext.request.contextPath}/portFolio/view?bNo=${item.bNo}">${item.bTitle}</a>
+		 		${item.bWriter}
+	 		</div>
 	 	</c:forEach>
 	 </c:when>
 	 <c:otherwise>
@@ -26,5 +30,6 @@
 	 </c:otherwise>
 	</c:choose>
 </div>
+<jsp:include page="../gnb/footer.jsp" flush="true" />
 </body>
 </html>
