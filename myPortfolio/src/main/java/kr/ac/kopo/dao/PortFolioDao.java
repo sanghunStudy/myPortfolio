@@ -3,10 +3,11 @@ package kr.ac.kopo.dao;
 import java.util.List;
 
 import kr.ac.kopo.model.Board;
+import kr.ac.kopo.utill.Pager;
 
 public interface PortFolioDao {
 	//포트폴리오 리스트
-	List<Board> list();
+	List<Board> list(Pager pager);
 	//포트폴리오 등록
 	void add(Board board);
 	//포트폴리오 상세보기

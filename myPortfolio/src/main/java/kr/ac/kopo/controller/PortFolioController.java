@@ -25,6 +25,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import kr.ac.kopo.model.Board;
 import kr.ac.kopo.service.PortFolioService;
+import kr.ac.kopo.utill.Pager;
 
 @RequestMapping("/portFolio")
 @Controller
@@ -42,10 +43,7 @@ public class PortFolioController {
 	String init(Model model) {
 		//가공데이터 삭제
 		service.init();
-		List<Board> list = service.list();
-		
-		model.addAttribute("list",list);
-		return path+"list";
+		return "redirect:list";
 	}
 	
 	//데이터를 한번에 자동으로 만들어주는 메서드
@@ -53,11 +51,7 @@ public class PortFolioController {
 	String dummy(Model model) {
 		//가공데이터 생성
 		service.dummy();
-		List<Board> list = service.list();
-		
-		model.addAttribute("list",list);
-		
-		return path+"list";
+		return "redirect:list";
 	}
 	
 	
@@ -112,8 +106,9 @@ public class PortFolioController {
 	}
 	//포트폴리오 리스트
 	@RequestMapping("/list")
-	public String list(Model model) {
-		List<Board> list =  service.list();
+	public String list(Pager pager, Model model) {
+		//Pager는 페이지 네이션을 위해 만든 클래스
+		List<Board> list =  service.list(pager);
 		model.addAttribute("list", list);
 		return path+"list";
 	}

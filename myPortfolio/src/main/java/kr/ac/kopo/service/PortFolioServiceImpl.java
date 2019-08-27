@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.kopo.dao.PortFolioDao;
 import kr.ac.kopo.model.Board;
+import kr.ac.kopo.utill.Pager;
 
 @Service
 public class PortFolioServiceImpl implements PortFolioService {
@@ -25,8 +26,8 @@ public class PortFolioServiceImpl implements PortFolioService {
 	
 	//포트폴리오 목록
 	@Override
-	public List<Board> list() {
-		return dao.list();
+	public List<Board> list(Pager pager) {
+		return dao.list(pager);
 	}
 	//포트폴리오 등록
 	@Override
@@ -112,7 +113,13 @@ public class PortFolioServiceImpl implements PortFolioService {
 			board.setbNo(i);
 			dao.delete(board);
 		}
-	}
+		
+		//실제 삭제가 아니라 상태 변경이기 때문에 db에 값은 그대로 남아있다.
+//		다시 살리고 싶으면 아래 쿼리로 update 해준다.
+		/*
+		 * update board set b_delete = 'N' where b_no between 17 and 99;
+		 */	
+		}
 	
 	//가공데이터 생성
 	@Override

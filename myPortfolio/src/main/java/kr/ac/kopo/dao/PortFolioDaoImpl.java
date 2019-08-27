@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.model.Board;
+import kr.ac.kopo.utill.Pager;
 
 @Repository
 public class PortFolioDaoImpl implements PortFolioDao {
@@ -16,8 +17,8 @@ public class PortFolioDaoImpl implements PortFolioDao {
 	
 	//포트폴리오 리스트 출력
 	@Override
-	public List<Board> list() {
-		return sql.selectList("board.list");
+	public List<Board> list(Pager pager) {
+		return sql.selectList("board.list", pager);
 	}
 
 	//포트폴리오 등록

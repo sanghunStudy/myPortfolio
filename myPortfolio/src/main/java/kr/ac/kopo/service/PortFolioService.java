@@ -8,10 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.kopo.model.Board;
+import kr.ac.kopo.utill.Pager;
 
 public interface PortFolioService {
 	//포트폴리오 목록
-	List<Board> list();
+	List<Board> list(Pager pager);
 	//포트폴리오 등록
 	void add(Board board);
 	//포트폴리오 상세보기

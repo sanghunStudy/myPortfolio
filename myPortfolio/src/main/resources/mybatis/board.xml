@@ -6,8 +6,21 @@
 <mapper namespace="board"><!-- DaoImpl에서 사용된다 예)board.list -->
 	
 <!-- 	포트폴리오 리스트 삭제가 N인것만 가져온다. -->
+<!-- 		페이지네이션을 위해 오라클 에서는 서브쿼리를 두번 날려줘야 한다.(rownum 사용) -->
+<!-- 	CDATA 로 감싸서 <= 부호를 글자 그대로 인식하도록 해준다. -->
+<!--    page는 현재 페이지를 의미    perPage는 페이지 당 보여줄 개수 (한번에 출력할 개수)
+		select *
+		from (select rownum row_num, sub.* 
+		from (select b_no,b_title,b_writer,b_contents,b_date from board where b_delete='N' order by b_no) sub)
+		where row_num > (현재 페이지 -1 * 한번에 보여질 갯수) and row_num <= (현재 페이지 * 한번에 보여질 갯수);
+-->
 	<select id="list" resultType="Board">
-		select b_no,b_title,b_writer,b_contents,b_date from board where b_delete='N' order by b_no desc
+		select *
+		from (select rownum row_num, sub.* 
+		from (select b_no,b_title,b_writer,b_contents,b_date from board where b_delete='N' order by b_no) sub)
+		<![CDATA[
+		where row_num > ((#{page} - 1) * #{perPage}) and row_num <= (#{page} * #{perPage})
+		]]>
 	</select>
 	
 <!-- 	포트폴리오 등록 시퀀스를 이용해서 자동증가 1부터 1씩증가  -->
