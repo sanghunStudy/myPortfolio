@@ -8,7 +8,7 @@
 <title>포트폴리오 목록</title>
 <style>
 	body{background:black;}
-	.portfolio-list-contents-box{width:1024px; padding-top:200px; margin:0 auto; text-align:center;}
+	.portfolio-list-contents-box{width:1024px; padding-top:120px; margin:0 auto; text-align:center;}
 	.portfolio-list-contents-box div{width:350px; height:350px; margin:30px 30px; display:inline-block; background:#fff;}
 </style>
 </head>
