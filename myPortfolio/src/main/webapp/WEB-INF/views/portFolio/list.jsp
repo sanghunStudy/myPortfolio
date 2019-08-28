@@ -9,7 +9,8 @@
 <style>
 	body{background:black;}
 	.portfolio-list-contents-box{width:1024px; padding-top:120px; margin:0 auto; text-align:center;}
-	.portfolio-list-contents-box div{width:350px; height:350px; margin:30px 30px; display:inline-block; background:#fff;}
+	.portfolio-list-contents-box .list-contents{width:350px; height:350px; margin:30px 30px; display:inline-block; background:#fff;}
+	.pagination-box a{color:#fff;}
 </style>
 </head>
 <jsp:include page="../gnb/nav.jsp" flush="true" />
@@ -18,7 +19,7 @@
 	<c:choose>
 	 <c:when test="${list.size() > 0 }">
 	 	<c:forEach var="item" items="${list}">
-	 		<div>
+	 		<div class="list-contents">
 		 		${item.bNo}
 		 		<a href="${pageContext.request.contextPath}/portFolio/view?bNo=${item.bNo}">${item.bTitle}</a>
 		 		${item.bWriter}
@@ -29,6 +30,9 @@
 	 	<p>등록된 포트폴리오가 없습니다.</p>
 	 </c:otherwise>
 	</c:choose>
+	<div class="pagination-box">
+		${pager.pagination}
+	</div>
 </div>
 <jsp:include page="../gnb/footer.jsp" flush="true" />
 </body>

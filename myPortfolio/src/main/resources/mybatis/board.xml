@@ -5,6 +5,10 @@
 
 <mapper namespace="board"><!-- DaoImpl에서 사용된다 예)board.list -->
 	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM board where B_DELETE = 'N'
+	</select>
+	
 <!-- 	포트폴리오 리스트 삭제가 N인것만 가져온다. -->
 <!-- 		페이지네이션을 위해 오라클 에서는 서브쿼리를 두번 날려줘야 한다.(rownum 사용) -->
 <!-- 	CDATA 로 감싸서 <= 부호를 글자 그대로 인식하도록 해준다. -->

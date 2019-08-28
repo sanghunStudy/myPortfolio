@@ -42,5 +42,10 @@ public class PortFolioDaoImpl implements PortFolioDao {
 	public void delete(Board board) {
 		sql.update("board.delete", board);
 	}
+	//전체 페이지 개수
+	@Override
+	public int total() {
+		return sql.selectOne("board.total");
+	}
 
 }

@@ -27,6 +27,10 @@ public class PortFolioServiceImpl implements PortFolioService {
 	//포트폴리오 목록
 	@Override
 	public List<Board> list(Pager pager) {
+		int total = dao.total();
+		
+		pager.setTotal(total);
+		
 		return dao.list(pager);
 	}
 	//포트폴리오 등록

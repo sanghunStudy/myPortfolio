@@ -58,23 +58,24 @@ public class PortFolioController {
 //	drag and drop 을 하기위한 메서드(CKEditorFuncNum 못 받아서 오류남)
 	@RequestMapping(value = "/drag", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String uploadDragDrop(@RequestParam(value="CKEditorFuncNum", required=false) String funcNumber, MultipartHttpServletRequest request){
+	public String uploadDragDrop(@RequestParam(value="CKEditorFuncNum", required=false) String funcNumber, HttpServletRequest request,MultipartFile upload){
 		OutputStream out = null;
         PrintWriter printWriter = null;
 		logger.info("drag 메서드 실행 확인");
 		
-		String fileName=request.getFileNames().next();
+		String fileName= upload.getOriginalFilename();
 		logger.info("fileName = "+ fileName);
+		String fnNum = request.getParameter("CKEditorFuncNum");
+		logger.info(fnNum+ "fnNum");
 		
-		CommonsMultipartFile multipartFile = (CommonsMultipartFile) request.getFile(fileName);
-		logger.info("multipartFile = "+ multipartFile);
+//		CommonsMultipartFile multipartFile = (CommonsMultipartFile) request.getFile(fileName);
+//		logger.info("multipartFile = "+ multipartFile);
 		
 		String url;
 	    try {
-	        byte[] bytes = multipartFile.getBytes();
+	        byte[] bytes = upload.getBytes();
 	        
 	        String storedFileLocation = "D:\\img\\";
-	        
 	        
 	        out = new FileOutputStream(new File(storedFileLocation + fileName));
 	        out.write(bytes);
@@ -86,15 +87,28 @@ public class PortFolioController {
 //	        stream.close();
 	        
 //	        logger.info("Server File Location=" + serverFile.getAbsolutePath());
-	    	String callback = request.getParameter("CKEditorFuncNum");
-	    	
+//	    	String callback = request.getParameter("CKEditorFuncNum");
+	    	int callback = 1;
 	        url = request.getContextPath() + "/img/" + fileName;
 	        
-	        return "<script type=\"text/javascript\">window.parent.CKEDITOR.tools.callFunction("+callback+
-	                ",\""+url+"\", \"\");</script>";
-	    } catch (Exception e) {
-	        return "You failed to upload " + fileName + " => " + e.getMessage();
-	    }
+		
+			/*
+			 * return
+			 * "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction(" +
+			 * callback + ",'" + url + "','이미지를 업로드 하였습니다.'" + ")</script>";
+			 */	        
+	        return "{'filename' : "+fileName+", 'uploaded' : 1, 'url':" +url+"}";
+
+	        		
+	        
+			/*
+			 * return
+			 * "<script type=\"text/javascript\">window.parent.CKEDITOR.tools.callFunction("
+			 * +callback+ ",\""+url+"\", \"\");</script>";
+			 */	    
+	        } catch (Exception e) {
+	        	return "You failed to upload " + fileName + " => " + e.getMessage();
+	        }
 	}
 
 	
@@ -107,6 +121,7 @@ public class PortFolioController {
 	//포트폴리오 리스트
 	@RequestMapping("/list")
 	public String list(Pager pager, Model model) {
+		System.out.println(pager.getPage() + "pager.getPage()");
 		//Pager는 페이지 네이션을 위해 만든 클래스
 		List<Board> list =  service.list(pager);
 		model.addAttribute("list", list);
