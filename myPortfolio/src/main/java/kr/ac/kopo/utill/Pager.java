@@ -29,24 +29,24 @@ public class Pager {
 	public int getPage() {
 		return page;
 	}
-	public void setPage(int page) {
-		//1보다 작은 정수로 접속 하였을 경우 1로 셋팅하여 출력
-		//소수로 들어왔을 경우 에러 처리가 필요함.
-		if(page < 1)
-			this.page = 1;
-		else
-			this.page = page;
-	}
-	
-	
-//	public void setPage(double inPage) {
-////1보다 작은 정수로 접속 하였을 경우 1로 셋팅하여 출력
-////		소수로 들어왔을 경우 에러 처리가 필요함.
+//	public void setPage(int page) {
+//		//1보다 작은 정수로 접속 하였을 경우 1로 셋팅하여 출력
+//		//소수로 들어왔을 경우 에러 처리가 필요함.
 //		if(page < 1)
 //			this.page = 1;
 //		else
-//			this.page = (int) Math.floor(inPage);
+//			this.page = page;
 //	}
+	
+	
+	public void setPage(int inPage) {
+//1보다 작은 정수로 접속 하였을 경우 1로 셋팅하여 출력
+//		소수로 들어왔을 경우 에러 처리가 필요함.
+		if(page < 1)
+			this.page = 1;
+		else
+			this.page = (int) Math.floor(inPage);
+	}
 	public int getPerPage() {
 		return perPage;
 	}

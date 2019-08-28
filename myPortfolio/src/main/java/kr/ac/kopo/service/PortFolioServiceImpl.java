@@ -27,8 +27,9 @@ public class PortFolioServiceImpl implements PortFolioService {
 	//포트폴리오 목록
 	@Override
 	public List<Board> list(Pager pager) {
+		//전체 게시물을 구해서 변수에 담아준다.
 		int total = dao.total();
-		
+		//Pager 클래스의 total에 위에서 담은 값을 셋팅
 		pager.setTotal(total);
 		
 		return dao.list(pager);
