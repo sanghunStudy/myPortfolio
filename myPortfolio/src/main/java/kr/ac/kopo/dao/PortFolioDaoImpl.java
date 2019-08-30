@@ -44,8 +44,8 @@ public class PortFolioDaoImpl implements PortFolioDao {
 	}
 	//전체 페이지 개수
 	@Override
-	public int total() {
-		return sql.selectOne("board.total");
+	public int total(Pager pager) {
+		return sql.selectOne("board.total",pager);
 	}
 
 }

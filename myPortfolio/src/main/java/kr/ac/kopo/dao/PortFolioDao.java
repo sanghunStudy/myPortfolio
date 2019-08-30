@@ -17,6 +17,6 @@ public interface PortFolioDao {
 	//포트폴리오 삭제 
 	void delete(Board board);
 	//전체 게시글 수 구하기
-	int total();
+	int total(Pager pager);
 
 }

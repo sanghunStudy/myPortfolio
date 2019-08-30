@@ -85,20 +85,17 @@ public class Board {
 	//이런식으로 사용시 확장성이 높아진다.
 	public static String getSearch(String search) {
 		
-		try {
-			if(search.equals("1")) {
+		//search.equals("1") 이런식으로 search에서 equals 메서드를 호출 하려고 하면
+		//search가 null일 경우 오류가 발생하게 된다. 따라서 항상 존재하는 비교값 1에 equals를 걸면 오류가 사라진다.
+			if("1".equals(search)) {
 				return "b_no";
-			}else if(search.equals("2")) {
+			}else if("2".equals(search)) {
 				return "b_title";
-			}else if(search.equals("3")){
+			}else if("3".equals(search)){
 				return "b_writer";
 			}else {
 				return null;
 			}
 	
-		}catch (NullPointerException e) {
-			logger.info("getSearch 메서드 null 발생");
-			return null;
-		}
 	}
 }

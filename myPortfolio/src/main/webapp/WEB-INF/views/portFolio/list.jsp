@@ -24,7 +24,7 @@
 		<div>
 <!-- 			action이 없기 때문에 현재와 같은 주소로 이동 (list)-->
 			<form method="get" action="">
-				<select name="search">
+				<select name="searchMode">
 					<option value="1">글 번호</option>
 					<option value="2">제목</option>
 					<option value="3">작성자</option>

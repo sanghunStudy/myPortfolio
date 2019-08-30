@@ -122,7 +122,7 @@ public class PortFolioController {
 	@RequestMapping("/list")
 	public String list(Pager pager, Model model) {
 		//Board 클래스에 객체를 만들지 않고 바로 접근 getSearch 메서드는 static 메서드(정적 머세드이다.)
-		pager.setSearch(Board.getSearch(pager.getSearch()));
+		pager.setSearch(Board.getSearch(pager.getSearchMode()));
 		//Pager는 페이지 네이션을 위해 만든 클래스
 		List<Board> list =  service.list(pager);
 		model.addAttribute("list", list);
