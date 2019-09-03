@@ -28,6 +28,13 @@
 	
 	<context:component-scan base-package="kr.ac.kopo" />
 	
-	
+	<interceptors>
+		<interceptor>
+			<mapping path="/portFolio/add"/>
+			<mapping path="/portFolio/update"/>
+			<mapping path="/portFolio/delete"/>
+			<beans:bean class="kr.ac.kopo.utill.UserInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

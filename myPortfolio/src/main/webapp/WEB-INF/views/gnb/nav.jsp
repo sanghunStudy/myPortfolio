@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +48,14 @@
 			<li><h1><a href="${pageContext.request.contextPath}/">B<span id="title-span">portFolio</span></a></h1></li>
 			<li><a href="${pageContext.request.contextPath}/portFolio/list">PortFolio List</a></li>
 			<li><a href="${pageContext.request.contextPath}/portFolio/add">Create PortFolio</a></li>
-			<li><a href="#">Login</a></li>
+			<c:choose>
+				<c:when test="${sessionScope.user eq null}">
+				<li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+				</c:when>
+				<c:otherwise>
+				<li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 	</nav>
 </body>
