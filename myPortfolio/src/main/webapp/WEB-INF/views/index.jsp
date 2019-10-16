@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <title>Home</title>	
 	<style>
 
@@ -15,7 +15,7 @@
 	    }
 	    to {
 	        transform: translate3d(0,0,0);
-	        opacity: 1
+	        opacity: 0.6
 	    }
 	}
 	
@@ -25,7 +25,7 @@
 	    }
 	    to {
 	        transform: translate3d(0,0,0);
-	        opacity: 1
+	        opacity: 0.6;
 	    }
 	}
 	.animated {animation-duration: 1s; animation-fill-mode: both; -webkit-animation-duration: 1s; -webkit-animation-fill-mode: both}
@@ -37,14 +37,17 @@
 	#content-box{width:100%; height:4000px;}
 	.content-sub-box{width:820px; height:670px; position: relative; background-color: #191919; top: -300px; background-color: #19191A; left: 50%; transform: translateX(-50%);}
 	.content-section{width:100%; color:#fff;}
-	.content-section-one{width:1024px; height:25%;  margin:0 auto; background:black;  background-image:url('${pageContext.request.contextPath}/resources/img/content-1.jpg'); text-align: center; background-repeat:no-repeat; background-position:center center; background-size:cover; background-attachment:fixed;}
-	.content-section-two{height:25%; background-image:url('${pageContext.request.contextPath}/resources/img/content-2.jpg'); background-repeat:no-repeat; background-position:top center; background-size:cover; background-attachment:fixed;}
-	.content-section-three{height:25%; background-repeat:no-repeat; background-position:bottom center; background-size:cover; background-attachment:fixed;}
+	.content-section-one{width:100%; height:25%;  margin:0 auto; background:black;  background-image:url('${pageContext.request.contextPath}/resources/img/coding-924920.jpg'); text-align: center; background-repeat:no-repeat; background-position:center center; background-size:cover; background-attachment:fixed;}
+	.content-section-two{height:25%; background-image:url('${pageContext.request.contextPath}/resources/img/background-2462431_1920.jpg'); background-repeat:no-repeat; background-position:top center; background-size:cover; background-attachment:fixed;}
+	.content-section-three{height:25%; background-repeat:no-repeat; background-position:bottom center; background-size:cover; background-attachment:fixed;background-image:url('${pageContext.request.contextPath}/resources/img/ocean-3605547_1920.jpg');}
 	.content-section-four{height:24%;}
-	.content-title{padding-top: 650px;}
-	.content-title p{font-size:5em; color:#fff; font-weight:680; line-height: 1.6em;}
-	.content-sub-title p{font-size:1.4em; color:#ffff; line-height: 1.5em;}
-	.my-skill{text-align: center; font-size: 14pt; font-weight: 560; line-height: 45px; padding-top: 200px;}
+	.content-title{padding-top:100px;position:relative;top:350px;width: 1100px; margin: 0 auto;
+    background: black;}
+	.content-sub-title {padding-bottom:100px;position:relative; top:350px; margin: 0 auto;width: 1100px; background-color: black;}
+	.content-title p{font-size:58pt; color:#fff; font-weight:680; line-height: 1.6em;font-family: "NanumMyeongjo";}
+	.content-sub-title p{font-size:24pt; color:#ffff; line-height: 1.5em;font-family: "NanumMyeongjo"}
+	.my-skill{text-align: center; font-size: 14pt; font-weight: 560; line-height: 45px; margin: 0 auto;
+    width: 1200px; position: relative; top: 300px; opacity: 0.6;background:black; }
 	.my-skill div{display:inline-block; padding-top:50px; margin:0px 30px;}
 	.my-skill h6{font-size:1.2em; color: #82B1C8;}
 	.my-skill span{margin-right: 12px; color: #939DAB;}
@@ -68,11 +71,10 @@
 			<section class="content-section content-section-one">
 				<div class="animated animatedFadeInUp fadeInUp">
 					<div class="content-title">
-						<p>I'M</p>
-						<p>A DEVELOPER</p>
+						<p>I'm Developer</p>
 					</div>
 					<div class="content-sub-title">
-						<p>한 차원 다른 신입</p>
+						<p>한 차원, 다른 신입</p>
 						<p>웹 개발자를 찾으십니까?</p>
 					</div>
 				</div>
@@ -115,8 +117,6 @@
 				</div>
 			</section>
 			<section class="content-section content-section-four">
-			<div class="content-sub-box">
-			</div>
 			</section>
 		<jsp:include page="./gnb/footer.jsp" flush="true" />
 		</article>

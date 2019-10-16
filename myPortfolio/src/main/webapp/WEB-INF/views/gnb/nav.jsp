@@ -35,25 +35,26 @@
 	
 /* 	body{background: black;} */
 	/* 네비 */
-	.nav-menu{width: 100%; list-style-type: none; margin:0 auto; padding:0; text-align:center; overflow: hidden; background-color: #191919; position: fixed; z-index:999;}
-	.nav-menu li{display:inline-block;}
-	.nav-menu li a{display:block; color:white; text-align:center; padding:0px 20px; line-height:64px; text-decoration: none; font-size:14px; font-weight:660;}
+	.nav-menu{width: 100%; height:80px;opacity:0.9; list-style-type: none; margin:0 auto; padding:0; text-align:center; overflow: hidden; background-color: #191919; position: fixed; z-index:999;}
+	.nav-menu li{display:inline-block;width:280px;position: relative; }
+	.nav-menu li a{display:block; height: 40px;padding: 20px 0;color:white; text-align:center; text-decoration: none;font-size:24pt; font-family: "NanumSquare";}
 	.nav-menu li a:hover{background-color: #111;}
 	#title-span{font-size:8px;}
+	.nav-menu li a img{height:80px;}
 </style>
 </head>
 <body>
 <nav>
 		<ul class="nav-menu">
-			<li><h1><a href="${pageContext.request.contextPath}/">B<span id="title-span">portFolio</span></a></h1></li>
-			<li><a href="${pageContext.request.contextPath}/portFolio/list">PortFolio List</a></li>
-			<li><a href="${pageContext.request.contextPath}/portFolio/add">Create PortFolio</a></li>
+			<li style="width: 360px;"><a href="${pageContext.request.contextPath}/"  style="text-align: left; padding: 0px 0px; height:80px;"><img src="/resources/img/Logo.png"></a></li>
+			<li style="bottom: 33px;"><a href="${pageContext.request.contextPath}/portFolio/list">List</a></li>
+			<li style="bottom: 33px;"><a href="${pageContext.request.contextPath}/portFolio/add">Create</a></li>
 			<c:choose>
 				<c:when test="${sessionScope.user eq null}">
-				<li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+				<li style="bottom: 33px;"><a href="${pageContext.request.contextPath}/login">Login</a></li>
 				</c:when>
 				<c:otherwise>
-				<li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+				<li style="bottom: 33px;"><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
