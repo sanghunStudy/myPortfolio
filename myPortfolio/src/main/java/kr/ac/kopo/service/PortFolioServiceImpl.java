@@ -72,7 +72,7 @@ public class PortFolioServiceImpl implements PortFolioService {
 			byte[] bytes = upload.getBytes();
 			//이미지 업로드할 경로(배포디렉토리로 설정)
 //			String uploadPath = "D:\\workspace-spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\myPortfolio\\WEB-INF\\views\\images\\";
-			String uploadPath = "D:\\img\\";
+			String uploadPath = "C:\\img\\";
 			out = new FileOutputStream(new File(uploadPath + fileName));
 	
 			//write메소드의 인수로 파일의 총 바이트를 준다.

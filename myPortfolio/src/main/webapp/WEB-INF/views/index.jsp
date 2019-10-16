@@ -41,8 +41,7 @@
 	.content-section-two{height:25%; background-image:url('${pageContext.request.contextPath}/resources/img/background-2462431_1920.jpg'); background-repeat:no-repeat; background-position:top center; background-size:cover; background-attachment:fixed;}
 	.content-section-three{height:25%; background-repeat:no-repeat; background-position:bottom center; background-size:cover; background-attachment:fixed;background-image:url('${pageContext.request.contextPath}/resources/img/ocean-3605547_1920.jpg');}
 	.content-section-four{height:24%;}
-	.content-title{padding-top:100px;position:relative;top:350px;width: 1100px; margin: 0 auto;
-    background: black;}
+	.content-title{padding-top:100px;position:relative;top:350px;width: 1100px; margin: 0 auto; background: black;}
 	.content-sub-title {padding-bottom:100px;position:relative; top:350px; margin: 0 auto;width: 1100px; background-color: black;}
 	.content-title p{font-size:58pt; color:#fff; font-weight:680; line-height: 1.6em;font-family: "NanumMyeongjo";}
 	.content-sub-title p{font-size:24pt; color:#ffff; line-height: 1.5em;font-family: "NanumMyeongjo"}
@@ -56,6 +55,8 @@
 	.my-portfolio span{margin-right: 12px; color: #939DAB;}
 	.my-portfolio div{margin:150px 5px; display:inline-block; width:250px; height:250px; background-color:#fff;}
 	</style>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
 </head>
 <jsp:include page="./gnb/nav.jsp" flush="true" />
 <body>
@@ -68,7 +69,7 @@
 <!-- 		</ul> -->
 <!-- 	</nav> -->
 		<article id="content-box">
-			<section class="content-section content-section-one">
+			<section class="content-section content-section-one section0">
 				<div class="animated animatedFadeInUp fadeInUp">
 					<div class="content-title">
 						<p>I'm Developer</p>
@@ -79,7 +80,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="content-section content-section-two">
+			<section class="content-section content-section-two section1_item">
 			<div class="my-skill animated animatedFadeInUp fadeInUp">
 			<h5><span>01</span>활용 가능 기술</h5>
 				<div>
@@ -108,7 +109,7 @@
 				</div>
 			</div>
 			</section>
-			<section class="content-section content-section-three">
+			<section class="content-section content-section-three section2-wrap">
 				<div class="my-portfolio">
 					<h5><span>02</span>포트폴리오</h5>
 					<div></div>
@@ -116,7 +117,7 @@
 					<div></div>
 				</div>
 			</section>
-			<section class="content-section content-section-four">
+			<section class="content-section content-section-four section3_item">
 			</section>
 		<jsp:include page="./gnb/footer.jsp" flush="true" />
 		</article>

@@ -75,7 +75,7 @@ public class PortFolioController {
 	    try {
 	        byte[] bytes = upload.getBytes();
 	        
-	        String storedFileLocation = "D:\\img\\";
+	        String storedFileLocation = "C:\\img\\";
 	        
 	        out = new FileOutputStream(new File(storedFileLocation + fileName));
 	        out.write(bytes);

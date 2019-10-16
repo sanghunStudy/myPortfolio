@@ -46,7 +46,7 @@
 <body>
 <nav>
 		<ul class="nav-menu">
-			<li style="width: 360px;"><a href="${pageContext.request.contextPath}/"  style="text-align: left; padding: 0px 0px; height:80px;"><img src="/resources/img/Logo.png"></a></li>
+			<li style="width: 360px;"><a href="${pageContext.request.contextPath}/"  style="text-align: left; padding: 0px 0px; height:80px;"><img src="${pageContext.request.contextPath}/resources/img/Logo.png"></a></li>
 			<li style="bottom: 33px;"><a href="${pageContext.request.contextPath}/portFolio/list">List</a></li>
 			<li style="bottom: 33px;"><a href="${pageContext.request.contextPath}/portFolio/add">Create</a></li>
 			<c:choose>
