@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="content-footer">
-	<p>© 2019 Proudly created with bsh</p>
+	<p>© 2019 Proudly created with Cjm Bsh PortFolio</p>
 	</div>
 </body>
 </html>
