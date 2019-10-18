@@ -37,7 +37,7 @@
 	/* 네비 */
 	.nav-menu{width: 100%; height:80px;list-style-type: none; margin:0 auto; padding:0; text-align:center; overflow: hidden; background: linear-gradient( to left, #fec194, #ff0061 ); position: fixed; z-index:999;}
 	.nav-menu li{display:inline-block;width:280px;position: relative; }
-	.nav-menu li a{display:block; height: 40px;padding: 20px 0;color:white; text-align:center; text-decoration: none;font-size:24pt; font-family: "NanumSquare";}
+	.nav-menu li a{display:block; height: 40px;padding: 20px 0;color:white; text-align:center; text-decoration: none;font-size:24pt; font-weight:bold;font-family: "NanumSquare";}
 	#title-span{font-size:8px;}
 	.nav-menu li a img{height:80px;}
 </style>
