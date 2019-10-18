@@ -12,9 +12,9 @@
 .main {width:1200px;height: 940px;margin:0 auto;}
 .mainLayout {margin:0px 25px; height: 840px;display:grid;grid-template-columns: 750px 400px;}
 .mainLayoutInSindBlock {height: 720px; display: inline-block;position: relative;top:100px;}
-.InSindBlockOne {width:690px; background-color: #eee;padding: 10px;}
-.InSindBlockTwo {width:330px;}
-.Attachments,.setting {background-color: #eee;height: 345px;padding: 10px;}
+.InSindBlockOne {width:690px; background-color: #eee;padding: 10px;box-shadow: 7px 8px 19px -15px;}
+.InSindBlockTwo {width:330px; }
+.Attachments,.setting {background-color: #eee;height: 345px;padding: 10px;box-shadow: 7px 8px 19px -15px;}
 .Attachments {margin-bottom:10px;}
 .insideTitle {color:#333;font-size: 18pt;font-family: "NanumSquare";font-weight: bold;margin-top: 10px;}
 .insideTitleInput { width:645px;padding: 5px 5px;margin-top: 10px;}
@@ -26,7 +26,7 @@
 .insideTitleInputGest {width:100px;}
 .Gest {padding: 0px 20px;}
 .purpose {height: 200px; padding:10px;}
-.fileUpload {color:#333;font-size: 12pt;font-family: "NanumSquare";height: 30px;width: 100%;}
+.fileUpload {color:#333;font-size: 12pt;font-family: "NanumSquare";height: 30px;width: 100%;s}
 .fileUploadLayout input{height: 30px;}
 .layoutEveyone {margin-bottom: 20px;}
 .settingCheckBox {display: grid; grid-template-rows: 70px;}
@@ -78,19 +78,19 @@
 		<div class="mainLayoutInSindBlock InSindBlockOne" >
 			<p class="insideTitle">
 				프로젝트 제목
-				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+				<span style="font-size: 10pt;color:#ff0061;font-weight: bold;">필수사항</span>
 			</p>
 			
 			<input class="insideTitleInput"/>
 			<p class="insideTitle insideTitleTwo">
 				프로젝트 개요
-				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+				<span style="font-size: 10pt;color:#ff0061;font-weight: bold;">필수사항</span>
 			</p>
 			<input class="insideTitleInput"/>
 			<div class="insideDateAndGest">
 				<div class="date">
 					<p class="insideTitle insideTitleTwo">프로젝트 기간
-					<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+					<span style="font-size: 10pt;color:#ff0061;font-weight: bold;">필수사항</span>
 					</p>
 					<div style="margin-top: 15px;">
 						<input class="inside left">
@@ -102,7 +102,7 @@
 				<div class="Gest">
 				<p class="insideTitle insideTitleTwo">
 				프로젝트 개요
-				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+				<span style="font-size: 10pt;color:#ff0061;font-weight: bold;">필수사항</span>
 				</p>
 				<div style="margin-top: 15px;">
 				<input class="insideTitleInputGest inside"/>
@@ -112,7 +112,7 @@
 			<div>
 			<p class="insideTitle insideTitleTwo">
 				프로젝트 목적
-			<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+			<span style="font-size: 10pt;color:#ff0061;font-weight: bold;">필수사항</span>
 			</p>
 			<textarea class="insideTitleInput purpose"> </textarea>
 			</div>
@@ -121,7 +121,7 @@
 			<div class="Attachments">
 			<p class="insideTitle insideTitleTwo" style="margin: 10px 0 15px 0;">
 				첨부파일
-			<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+			<span style="font-size: 10pt;color:#ff0061;font-weight: bold;">필수사항</span>
 			</p>
 			<div>
 			<div class="layoutEveyone">
@@ -159,7 +159,7 @@
 			<div class="setting">
 			<p class="insideTitle insideTitleTwo" style="margin: 10px 0 15px 0;">
 				개발환경
-			<span style="font-size: 10pt;color:#ff0061;">선택사항</span>
+			<span style="font-size: 10pt;color:#ff0061;font-weight: bold;">선택사항</span>
 			</p>
 			<div class="settingCheckBox">
 				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">DB</P><input type="text" style="width:90%;padding: 5px;margin-top: 10px;" /></div>
