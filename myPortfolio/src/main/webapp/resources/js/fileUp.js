@@ -39,20 +39,23 @@ function save(){
 		var ajaxData = new FormData();
 		var files = $("#fileInput").prop("files");
 		for(var i=0; i < files.length; i++){
-		    ajaxData.append('files[' + i + ']', files[i]);
-		    console.log(files[i]);
+			ajaxData.append("files["+i+"]",files[i]);
 		}
-//		ajaxData.append("file",files);
-		console.log(ajaxData);
 		$.ajax({ 
 			type: "POST", 
-//			enctype: 'multipart/form-data',
+			enctype: 'multipart/form-data',
 			url: '/kopo/portFolio/upload', 
-			data: ajaxData, 
-			processData: false, 
-			contentType: false, 
-			success: function (result) {
-				
+			cache: false,
+		    contentType: false,
+		    processData: false,
+		    data: ajaxData,
+		    success: function (result) {
+		    	var fileNameList = "";
+//				console.log(result);
+				$.each(result,function(key,val){
+					fileNameList += "<p>"+val+"</p><a>삭제</a>";
+				});
+				$("#fileList").html(fileNameList);
 			}, error: function (e) { 
 				console.log(e);
 				console.log(e.status);

@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartRequest;
 
 import kr.ac.kopo.dao.PortFolioDao;
 import kr.ac.kopo.model.Board;
+import kr.ac.kopo.model.FileUpload;
 import kr.ac.kopo.utill.Pager;
 
 @Service
@@ -143,48 +144,72 @@ public class PortFolioServiceImpl implements PortFolioService {
 		}
 		
 	}
-	//리스트
-	@Override
-	public List<Board> fileUp(Board board) {
-		int boardCnt =	dao.fileInsert(board);
-		if(boardCnt != 0) {
-			return dao.fileUp(board);	
-		}else {
-			return null;			
-		}
-	}
 	
-	// 리눅스 기준으로 파일 경로를 작성 ( 루트 경로인 /으로 시작한다. )
-		// 윈도우라면 workspace의 드라이브를 파악하여 JVM이 알아서 처리해준다.
-	// 따라서 workspace가 C드라이브에 있다면 C드라이브에 upload 폴더를 생성해 놓아야 한다.
+//	@Override
+//	public String restore(ArrayList<MultipartFile> request) {
+//			String path = ""; 
+//			
+//			if(request.size() > 0) {
+//				System.out.println("restoreServiceImpl - 실행");
+//				path = ((HttpServletRequest) request).getSession().getServletContext().getRealPath("/upload");
+//				System.out.println(path + "path");
+//				File fileDir = new File(path); 
+//				if (!fileDir.exists())
+//					fileDir.mkdirs();
+//				
+//				long time = System.currentTimeMillis(); 
+//				
+//				for (MultipartFile mf : request) { 
+//					String originFileName = mf.getOriginalFilename(); // 원본 파일 명 
+//					String saveFileName = String.format("%d_%s", time, originFileName); 
+//					try { // 파일생성 
+//						mf.transferTo(new File(path, saveFileName));
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
+//					
+//				}
+//				return path;
+//			}else {
+//				System.out.println("파일 사이즈 0");
+//				return "등록된 파일이 없습니다.";
+//			}
+//	}
+	//첨부파일 파일 업로드
 	@Override
-	public String restore(ArrayList<MultipartFile> request) {
-			String path = ""; 
-			
-			if(request.size() > 0) {
-				System.out.println("restoreServiceImpl - 실행");
-				path = ((HttpServletRequest) request).getSession().getServletContext().getRealPath("/upload");
-				System.out.println(path + "path");
-				File fileDir = new File(path); 
-				if (!fileDir.exists())
-					fileDir.mkdirs();
-				
-				long time = System.currentTimeMillis(); 
-				
-				for (MultipartFile mf : request) { 
-					String originFileName = mf.getOriginalFilename(); // 원본 파일 명 
-					String saveFileName = String.format("%d_%s", time, originFileName); 
-					try { // 파일생성 
-						mf.transferTo(new File(path, saveFileName));
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					
+	public List<String> uploadFile(FileUpload uploadForm) {
+		//파일 목록 얻어오기
+		List<MultipartFile> files = uploadForm.getFiles();
+		//첨부파일 저장 경로
+		String path = "C:\\upload\\";
+		System.out.println(files.get(0).getOriginalFilename());
+		List<String> fileNames = new ArrayList<String>();
+		if(null != files && files.size() > 0) {
+			//파일 저장할 폴더 생성
+			File fileDir = new File(path); 
+			if (!fileDir.exists())
+				fileDir.mkdirs();
+			long time = System.currentTimeMillis(); 
+			//파일있는만큼 전부 반복
+			for (MultipartFile mf : files) {
+				//파일명 출력
+				String fileName = mf.getOriginalFilename();
+				fileNames.add(fileName);
+				//원본 파일 명
+				String originFileName = mf.getOriginalFilename(); 
+				//저장할 파일명
+				String saveFileName = String.format("%d_%s", time, originFileName); 
+				try { // 파일생성 
+					mf.transferTo(new File(path, saveFileName));
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-				return path;
-			}else {
-				System.out.println("파일 사이즈 0");
-				return "등록된 파일이 없습니다.";
 			}
+
+			return fileNames;
+		}else {
+			fileNames.add("등록된 포트폴리오가 없습니다.");
+			return fileNames;
+		}
 	}
 }

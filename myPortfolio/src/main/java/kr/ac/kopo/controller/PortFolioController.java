@@ -1,13 +1,16 @@
 package kr.ac.kopo.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.model.Board;
+import kr.ac.kopo.model.FileUpload;
 import kr.ac.kopo.service.PortFolioService;
 import kr.ac.kopo.utill.Pager;
 
@@ -57,21 +62,11 @@ public class PortFolioController {
 		model.addAttribute("list", list);
 		return path+"list";
 	}
-//	@RequestMapping( value= "/upload", produces="application/json", method = RequestMethod.POST )
 	@RequestMapping( value= "/upload", method = RequestMethod.POST )
-	public @ResponseBody String upload(Model model,@RequestParam ArrayList<MultipartFile> files) {
-		System.out.println(files);
-		String url = service.restore(files);
-		model.addAttribute("url", url);
-		return "result";
+	public @ResponseBody List<String> upload(@ModelAttribute FileUpload uploadForm) {
+		List<String> resultMsg = service.uploadFile(uploadForm);
+		return resultMsg;
 	}
-	
-	@RequestMapping(value="/a",method = RequestMethod.POST)
-	private String fileUp(@RequestBody Board board){
-//		List<Board> fileList =service.fileUp(board);
-		return "";
-	}
-	
 	//포트폴리오 작성 화면
 	@RequestMapping(value="/add", method = RequestMethod.GET)
 	public String portFolioAdd() {

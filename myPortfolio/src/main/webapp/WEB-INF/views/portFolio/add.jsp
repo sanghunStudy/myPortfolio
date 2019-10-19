@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,10 +90,13 @@
 			<div>
 			<div class="layoutEveyone">
 				<span class="fileUploadLayout">
-                     <input type="file" id="fileInput" name="fileInput" hidden="true" multiple="multiple"/>
+                     <input type="file" id="fileInput" name="files[]" hidden="true" multiple="multiple"/>
                      <input type="text" name="fileNameInput" class="fileUpload" id="fileNameInput" value="" readonly="readonly"/>
                      <button id="fileSearch" type="button">찾아보기</button>			
 				</span>
+			</div>
+			<div id="fileList">
+			
 			</div>
 			</div>
 			</div>

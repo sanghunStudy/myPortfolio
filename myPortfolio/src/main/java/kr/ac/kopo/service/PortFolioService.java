@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.ac.kopo.model.Board;
+import kr.ac.kopo.model.FileUpload;
 import kr.ac.kopo.utill.Pager;
 
 public interface PortFolioService {
@@ -30,8 +31,6 @@ public interface PortFolioService {
 	//가공데이터 생성
 	void dummy();
 	
-	List<Board> fileUp(Board board);
-	
-	String restore(ArrayList<MultipartFile> files);
+	List<String> uploadFile(FileUpload uploadForm);
 
 }
