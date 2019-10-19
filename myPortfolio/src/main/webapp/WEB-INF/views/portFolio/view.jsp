@@ -9,10 +9,18 @@
 <body>
 	${viewItem.bNo}
 	${viewItem.bTitle}
-	${viewItem.bDate}
+	${viewItem.bSummary}
+	${viewItem.bRegTs}
 	${viewItem.bViews}
-	${viewItem.bWriter}
-	${viewItem.bContents}
+	${viewItem.bStartTs}
+	${viewItem.bEndTs}
+	${viewItem.bUserCnt}
+	${viewItem.bPurpose}
+	${viewItem.bDb}
+	${viewItem.bTool}
+	${viewItem.bLanguage}
+	${viewItem.bEtc}
+	
 	
 	<a href="${pageContext.request.contextPath}/portFolio/update?bNo=${viewItem.bNo}">수정하기</a>
 	<a href="${pageContext.request.contextPath}/portFolio/delete?bNo=${viewItem.bNo}">삭제하기</a>

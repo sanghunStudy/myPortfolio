@@ -75,6 +75,7 @@ public class PortFolioController {
 	//포티폴리오 입력 화면
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public String portFolioAdd(Board board) {
+		board.setbWriter("user");
 		service.add(board);
 		return "redirect:list";
 	}

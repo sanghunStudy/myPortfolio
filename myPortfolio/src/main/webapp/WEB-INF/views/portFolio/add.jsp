@@ -13,7 +13,7 @@
 </head>
 <jsp:include page="../gnb/listNav.jsp" flush="true" />
 <body>
-<form action="" method="post" id="" enctype="multipart/form-data">
+<form action="" method="post" id="">
 <article class="main">
 	<div class="mainLayout">
 		<div class="mainLayoutInSindBlock InSindBlockOne" >
@@ -21,22 +21,21 @@
 				프로젝트 제목
 				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
 			</p>
-			
-			<input class="insideTitleInput"/>
+			<input name="bTitle" class="insideTitleInput"/>
 			<p class="insideTitle insideTitleTwo">
 				프로젝트 개요
 				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
 			</p>
-			<input class="insideTitleInput"/>
+			<input name="bSummary" class="insideTitleInput"/>
 			<div class="insideDateAndGest">
 				<div class="date">
 					<p class="insideTitle insideTitleTwo">프로젝트 기간
 					<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
 					</p>
 					<div style="margin-top: 15px;">
-						<input class="inside left">
+						<input name="bStartTs" class="inside left datePic" readonly="readonly">
 					  ~  
-						<input class="inside right">
+						<input name="bEndTs" class="inside right datePic"  readonly="readonly">
 					</div>
 				</div>
 				<div style="background: #aaa;margin-top: 20px;"></div>
@@ -46,7 +45,7 @@
 				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
 				</p>
 				<div style="margin-top: 15px;">
-				<input class="insideTitleInputGest inside"/>
+				<input name="bUserCnt" class="insideTitleInputGest inside"/>
 				</div>
 				</div>
 			</div>
@@ -55,7 +54,7 @@
 				프로젝트 목적
 			<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
 			</p>
-			<textarea class="insideTitleInput purpose"> </textarea>
+			<textarea name="bPurpose" class="insideTitleInput purpose"> </textarea>
 			</div>
 		</div>
 		<div class="mainLayoutInSindBlock InSindBlockTwo" >
@@ -83,10 +82,10 @@
 			<span style="font-size: 10pt;color:#ff0061;">선택사항</span>
 			</p>
 			<div class="settingCheckBox">
-				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">DB</P><input type="text" style="width:90%;padding: 5px;margin-top: 10px;" /></div>
-				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">Tool</P><input type="text"  style="width:90%;padding: 5px;margin-top: 10px;" /></div>
-				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">Language</P><input type="text"  style="width:90%;padding: 5px;margin-top: 10px;" /></div>
-				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">Etc</P><input type="text"  style="width:90%;padding: 5px;margin-top: 10px;" /></div>
+				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">DB</P><input type="text"  name="bDb" style="width:90%;padding: 5px;margin-top: 10px;" /></div>
+				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">Tool</P><input type="text"  name="bTool"  style="width:90%;padding: 5px;margin-top: 10px;" /></div>
+				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">Language</P><input type="text"  name="bLanguage"  style="width:90%;padding: 5px;margin-top: 10px;" /></div>
+				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">Etc</P><input type="text"  name="bEtc" style="width:90%;padding: 5px;margin-top: 10px;" /></div>
 			</div>
 			</div>
 		</div>
@@ -94,7 +93,7 @@
 	<div style="margin: 20px auto;width:1200px;height: 30px;position: relative;"><input type="submit" value="작성완료" style="width:120px; margin: 0 auto; border-radius: 10px;  height: 40px; position: absolute; left: 50%;transform:translate(-50%, 0);background-color: #ff0061;border: 1px #fec194;color: white;cursor: pointer; font-size: 14pt;"></div>
 </article>
 </form>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/datepicker.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/fileUp.js"></script>
 <jsp:include page="../gnb/footer.jsp" flush="true" />
 </body>
