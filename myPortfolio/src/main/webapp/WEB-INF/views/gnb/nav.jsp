@@ -42,5 +42,5 @@
 <script>
 	var path = "${pageContext.request.contextPath}";
 </script>
-<script src="${pageContext.request.contextPath}/resources/js/comm.js"></script>
+<script src="${pageContext.request.contextPath}/resources/comm/js/gnb.js"></script>
 </html>
