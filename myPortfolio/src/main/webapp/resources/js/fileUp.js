@@ -44,7 +44,7 @@ function save(){
 		$.ajax({ 
 			type: "POST", 
 			enctype: 'multipart/form-data',
-			url: 'portFolio/upload', 
+			url: path+'/portFolio/upload', 
 			cache: false,
 		    contentType: false,
 		    processData: false,

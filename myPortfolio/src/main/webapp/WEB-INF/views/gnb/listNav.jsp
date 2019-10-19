@@ -59,4 +59,7 @@
 		</ul>
 	</nav>
 </body>
+<script>
+	var path = "${pageContext.request.contextPath}";
+</script>
 </html>
