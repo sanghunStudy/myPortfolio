@@ -30,21 +30,21 @@ function save(){
 	  
 	if(fileName == ""){
 		alert("hwp 파일을 선택 해주세요");
-	}else if(chkFileType(fileName)){
-		alert("hwp 파일만 업로드 가능 합니다.");
-	    return false;
 	}else{
-		$("input[name='fileNameInput']").val(fileName);
-        
 		var ajaxData = new FormData();
 		var files = $("#fileInput").prop("files");
 		for(var i=0; i < files.length; i++){
-			ajaxData.append("files["+i+"]",files[i]);
+			if(chkFileType(files[i].name,files[i].size)){
+			    return false;
+			}else{
+				ajaxData.append("files["+i+"]",files[i]);
+			}
 		}
+		$("input[name='fileNameInput']").val(fileName);
 		$.ajax({ 
 			type: "POST", 
 			enctype: 'multipart/form-data',
-			url: '/kopo/portFolio/upload', 
+			url: 'portFolio/upload', 
 			cache: false,
 		    contentType: false,
 		    processData: false,
@@ -64,12 +64,22 @@ function save(){
 	}
 }
 
+var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); //파일 확장자 정규식 
+var maxSize = 5242880; // 5MB
 //파일 타입 체크
-function chkFileType(fileName){
+function chkFileType(fileName,fileSize){
     var fileFormat = fileName.split(".");
-     if (fileFormat.indexOf("hwp") != 1) {
+    
+    if(fileSize > maxSize){
+    	alert("5MB이상의 파일은 업로드가 불가능합니다.");
+    	return false;
+    }
+    
+    if(regex.test(fileName)){
+    	alert("hwp 파일만 업로드 가능 합니다.");
+    	 return false;
+    }else if (fileFormat.indexOf("hwp") != 1) {
          return true;
-     } else {
-         return false;
-     }
+    }
+    
 }

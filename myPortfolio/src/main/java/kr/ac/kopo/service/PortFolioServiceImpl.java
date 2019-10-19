@@ -138,7 +138,7 @@ public class PortFolioServiceImpl implements PortFolioService {
 			//Board 객체 생성하여 원하는 값 셋팅 후 add메서드 반복 호출로 db에 값 생성
 			Board board = new Board();
 			board.setbTitle(i+"번째 테스트");
-			board.setbContents(i+"번째 테스트");
+			board.setbEtc(i+"번째 테스트");
 			board.setbWriter("배상훈");
 			dao.add(board);
 		}

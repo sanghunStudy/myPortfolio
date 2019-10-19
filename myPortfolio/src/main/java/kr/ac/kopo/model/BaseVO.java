@@ -2,56 +2,77 @@ package kr.ac.kopo.model;
 
 public class BaseVO {
 	
-private String groupId;
-private String orgFileName;
-private String refileName;
-private String fileSize;
-private String fileDir;
-private String fileExt;
-private String regTs;
+private String fNo;//첨부파일번호
+private String fOName;//첨부파일원본명
+private String fPName;//첨부파일 실제이름
+private String fVolume;//첨부파일용량
+private String fType;//첨부파일타입
+private String fDelete;//첨부파일 삭제여부
+private String fRegTs;//첨부파일 작성일자
+private String fDir;//첨부파일경로
 
+private String userId;//사용자 아이디
+private String pw;//비번
 
-public String getOrgFileName() {
-	return orgFileName;
+public String getUserId() {
+	return userId;
 }
-public void setOrgFileName(String orgFileName) {
-	this.orgFileName = orgFileName;
+public void setUserId(String userId) {
+	this.userId = userId;
 }
-public String getRefileName() {
-	return refileName;
+public String getPw() {
+	return pw;
 }
-public void setRefileName(String refileName) {
-	this.refileName = refileName;
+public void setPw(String pw) {
+	this.pw = pw;
 }
-public String getGroupId() {
-	return groupId;
+public String getfNo() {
+	return fNo;
 }
-public void setGroupId(String groupId) {
-	this.groupId = groupId;
+public void setfNo(String fNo) {
+	this.fNo = fNo;
 }
-public String getFileSize() {
-	return fileSize;
+public String getfOName() {
+	return fOName;
 }
-public void setFileSize(String fileSize) {
-	this.fileSize = fileSize;
+public void setfOName(String fOName) {
+	this.fOName = fOName;
 }
-public String getFileDir() {
-	return fileDir;
+public String getfVolume() {
+	return fVolume;
 }
-public void setFileDir(String fileDir) {
-	this.fileDir = fileDir;
+public void setfVolume(String fVolume) {
+	this.fVolume = fVolume;
 }
-public String getFileExt() {
-	return fileExt;
+public String getfType() {
+	return fType;
 }
-public void setFileExt(String fileExt) {
-	this.fileExt = fileExt;
+public void setfType(String fType) {
+	this.fType = fType;
 }
-public String getRegTs() {
-	return regTs;
+public String getfDelete() {
+	return fDelete;
 }
-public void setRegTs(String regTs) {
-	this.regTs = regTs;
+public void setfDelete(String fDelete) {
+	this.fDelete = fDelete;
+}
+public String getfRegTs() {
+	return fRegTs;
+}
+public void setfRegTs(String fRegTs) {
+	this.fRegTs = fRegTs;
+}
+public String getfDir() {
+	return fDir;
+}
+public void setfDir(String fDir) {
+	this.fDir = fDir;
+}
+public String getfPName() {
+	return fPName;
+}
+public void setfPName(String fPName) {
+	this.fPName = fPName;
 }
 
 

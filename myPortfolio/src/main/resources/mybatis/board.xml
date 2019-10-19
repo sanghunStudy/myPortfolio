@@ -14,13 +14,18 @@
 	-->
 	<sql id="search">
 			<if test="search != null and keyword != '' and keyword != null">
-			and ${search} LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+			AND ${search} LIKE CONCAT(CONCAT('%', #{keyword}), '%')
 			</if>
 	</sql>
 	<!-- 	sql 태그 안에 있는 쿼리는 include 태그로 사용 가능하다. -->
 	
 	<select id="total" resultType="Integer">
-		select count(*) from board where b_delete = 'N'
+		SELECT /*total board.xml*/
+			COUNT(*) 
+		FROM 
+			BOARD 
+		WHERE 
+			B_DELETE = 'N'
 		<include refid="search"></include>
 	</select>
 	
@@ -34,77 +39,165 @@
 		where row_num > (현재 페이지 -1 * 한번에 보여질 갯수) and row_num <= (현재 페이지 * 한번에 보여질 갯수);
 -->
 	<select id="list" resultType="Board">
-		select *
-		from (select rownum row_num, sub.* 
-		from (select b_no,b_title,b_writer,b_contents,b_date from board where b_delete='N'
-		<include refid="search"></include> order by b_no) sub)
+		SELECT /*list board.xml*/
+			*
+		FROM
+		(SELECT 
+			ROWNUM ROW_NUM,
+			SUB.* 
+		FROM(
+			SELECT
+				B_NO,
+				B_TITLE,
+				B_WRITER,
+				B_REG_TS
+			FROM
+				BOARD
+			WHERE B_DELETE = 'N'
+		<include refid="search"></include> ORDER BY B_NO) SUB)
 		
 		<![CDATA[
-			where row_num > ((#{dbPage} - 1) * #{perPage}) and row_num <= (#{dbPage} * #{perPage})
+			WHERE ROW_NUM > ((#{dbPage} - 1) * #{perPage}) AND ROW_NUM <= (#{dbPage} * #{perPage})
 		]]>
 	</select>
 	
 <!-- 	포트폴리오 등록 시퀀스를 이용해서 자동증가 1부터 1씩증가  -->
 	<insert id="add">
-		insert into board(b_no,b_title,b_writer,b_contents,b_date)
-		values(bno_seq.nextval,#{bTitle},#{bWriter},#{bContents},sysdate)
+	INSERT INTO BOARD( /*add board.xml*/
+		B_NO,
+		B_TITLE,
+		B_WRITER,
+		B_SUMMARY,
+		B_REG_TS,
+		B_DELETE,
+		B_START_TS,
+		B_END_TS,
+		B_USER_CNT,
+		B_PURPOSE,
+		B_DB,
+		B_TOOL,
+		B_LANGUAGE,
+		B_ETC
+	)VALUES(
+		bno_seq.nextval,
+		#{bTitle},
+		#{bWriter},
+		#{bSummary},
+		SYSDATE,
+		'N',
+		#{bStartTs},
+		#{bEndTs},
+		#{bUserCnt},
+		#{bPurpose},
+		#{bDb},
+		#{bTool},
+		#{bLanguage},
+		#{bEtc}
+	)
 	</insert>
 	
 <!-- 포트폴리오 조회수 증가 -->
 	<update id="viewCount">
-		update board
-		set b_views = b_views +1
-		where b_no = #{bNo}
+		UPDATE /*viewCount board.xml*/
+			BOARD
+		SET 
+			B_VIEWS = B_VIEWS +1
+		WHERE 
+			B_NO = #{bNo}
 	</update>
 <!-- 	포트폴리오 상세보기 -->
 	<select id="view" resultType="Board">
-		select b_no,b_title,b_writer,b_contents,b_date,b_views from board where b_no = #{bNo}
+		SELECT /*view board.xml*/
+			B_NO,
+			B_TITLE,
+			B_WRITER,
+			B_SUMMARY,
+			B_REG_TS,
+			B_START_TS,
+			B_END_TS,
+			B_USER_CNT,
+			B_PURPOSE,
+			B_DB,
+			B_TOOL,
+			B_LANGUAGE,
+			B_ETC,
+			B_VIEWS 
+		FROM 
+			BOARD 
+		WHERE 
+			B_NO = #{bNo}
 	</select>
 <!-- 	포트폴리오 수정 -->
 	<update id="update">
-		update board
-		set b_title = #{bTitle},
-		b_contents = #{bContents},
-		b_update_date = sysdate,
-		b_update_writer = #{bUpdateWriter}
-		where b_no = #{bNo}
+		UPDATE /*update board.xml*/
+			BOARD
+		SET
+			B_TITLE = #{bTitle},
+			B_WRITER = #{bWriter},
+			B_SUMMARY = #{bSummary},
+			B_START_TS = #{bStartTs},
+			B_END_TS = #{bEndTs},
+			B_USER_CNT = #{bUserCnt},
+			B_PURPOSE = #{bPurpose},
+			B_DB = #{bDb},
+			B_TOOL = #{bTool},
+			B_LANGUAGE = #{bLanguage},
+			B_ETC = #{bEtc},
+			B_UPDATE_TS = SYSDATE,
+			B_UPDATE_WRITER = #{userId}
+		WHERE 
+			B_NO = #{bNo}
 	</update>
 <!-- 	포트폴리오 삭제 -->
 	<update id="delete">
-		update board
-		set b_delete = 'Y',
-		b_delete_date = sysdate,
-		b_update_writer = #{bUpdateWriter}
-		where b_no = #{bNo}
+		UPDATE /*delete board.xml*/
+			BOARD
+		SET
+			B_DELETE = 'Y',
+			B_DELETE_TS = SYSDATE,
+			B_UPDATE_WRITER = #{userId}
+		WHERE
+			B_NO = #{bNo}
 	</update>
 	
 	<insert id="fileInsert">
-		INSERT INTO B_FILE(
+		INSERT INTO B_FILE( /*fileInsert board.xml*/
 			B_NO,
 			F_NO,
-			F_NAME,
+			F_O_NAME,
+			F_P_NAME,
 			F_VOLUME,
 			F_TYPE,
-			F_DELETE
-		)
-		VALUES(
-			#{groupId},
+			F_DELETE,
+			F_REG_TS,
+			F_DIR
+		)VALUES(
+			#{bNo},
 			FNO_SEQ.NEXT_VAL,
-			#{fName},
+			#{fOName},
+			#{fPName},
 			#{fVolume},
-			'N'
+			#{fType},
+			'N',
+			SYSDATE,
+			#{fDir}
 		)
 	</insert>
 	
 	<select id="fileList" resultType="Board">
-		SELECT 
-			F_NAME,
+		SELECT	/*fileList board.xml*/
+			F_NO, 
+			F_O_NAME,
+			F_P_NAME,
 			F_VOLUME,
-			F_TYPE 
-			FROM 
-			BOARD b 
+			F_DIR 
+		FROM 
+			BOARD B
 		JOIN 
-			B_FILE bf 
-		ON b.B_NO = #{bNo}
+			B_FILE BF 
+		ON 
+			B.B_NO =BF.B_NO 
+		AND 
+			BF.B_NO = #{bNo}
 	</select>
 </mapper>
