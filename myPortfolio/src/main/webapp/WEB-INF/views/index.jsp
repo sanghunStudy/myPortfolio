@@ -41,19 +41,23 @@
 	.content-section-two{height:1000px; background-image:url('${pageContext.request.contextPath}/resources/img/background-2462431_1920.jpg'); background-repeat:no-repeat; background-position:top center; background-size:cover; background-attachment:fixed;}
 	.content-section-three{height:1000px; background-repeat:no-repeat; background-position:bottom center; background-size:cover; background-attachment:fixed;background-image:url('${pageContext.request.contextPath}/resources/img/ocean-3605547_1920.jpg');}
 	.content-section-four{height:100px;}
-	.content-title{padding-top:10px;position:relative;top:350px;width: 1100px; margin: 0 auto; background: black;}
-	.content-sub-title {padding-bottom:50px;position:relative; top:270px; margin: 0 auto;width: 1100px; background-color: black;-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;}
+	.content-title{padding-top:60px;height:200px;position:relative;top:350px;width: 1100px; margin: 0 auto; background: black;}
+	.content-sub-title {padding-bottom:100px;position:relative; top:270px; margin: 0 auto;width: 1100px; background-color: black;-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;}
 	.content-title p{font-size:58pt; color:#fff; font-weight:680; line-height: 1.6em;font-family: "NanumMyeongjo";}
 	.content-sub-title p{font-size:24pt; color:#ffff; line-height: 1.5em;font-family: "NanumMyeongjo"}
 	.my-skill{text-align: center; font-size: 14pt; font-weight: 560; margin: 0 auto;
     width: 1200px; position: relative; top: 300px; opacity: 0.6;background:black;    padding: 50px; }
-	.my-skill div{display:inline-block; margin:0px 100px;}
+	.my-skill div{display:inline-grid;display: inline-grid;
+    grid-template-columns: 100px;
+    margin: 40px 100px;}
 	.my-skill h6{font-size:1.2em; color: #82B1C8;}
 	.my-skill span{margin-right: 12px; color: #939DAB;}
 	.my-skill h5,.my-portfolio h5{font-size: 2.0em;}
 	.my-portfolio{text-align:center; font-size:15pt; padding-top:100px;}
 	.my-portfolio span{margin-right: 12px; color: #939DAB;}
 	.my-portfolio div{margin:150px 30px; display:inline-block; width:300px; height:400px; background-color:#fff;}
+	.content-section-two div h6 {margin-bottom: 20px;}
+	.content-section-two div p { margin-bottom: 20px;}
 	</style>
 <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
 </head>

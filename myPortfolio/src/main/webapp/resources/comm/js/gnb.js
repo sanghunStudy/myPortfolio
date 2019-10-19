@@ -22,7 +22,7 @@
             //초기값을 오늘 날짜로 설정
             $('.datePic').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
 
-        if(window.location.pathname != '/kopo/'){
+        if(window.location.pathname != '/'){
         	//이 부분에 css추가하면됨
         	$(".nav-menu").css("background","linear-gradient( to left, #fec194, #ff0061 )").css("opacity","0.9");
         }
