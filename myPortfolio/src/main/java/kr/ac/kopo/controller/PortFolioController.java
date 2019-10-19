@@ -62,9 +62,11 @@ public class PortFolioController {
 		model.addAttribute("list", list);
 		return path+"list";
 	}
+	//파일업로드
 	@RequestMapping( value= "/upload", method = RequestMethod.POST )
-	public @ResponseBody List<String> upload(@ModelAttribute FileUpload uploadForm) {
-		List<String> resultMsg = service.uploadFile(uploadForm);
+	public @ResponseBody List<String> upload(@ModelAttribute FileUpload uploadForm, int savePoint) {
+		
+		List<String> resultMsg = service.uploadFile(uploadForm,savePoint);
 		return resultMsg;
 	}
 	//포트폴리오 작성 화면
@@ -72,7 +74,7 @@ public class PortFolioController {
 	public String portFolioAdd() {
 		return path+"add";
 	}
-	//포티폴리오 입력 화면
+	//포티폴리오 작성처리
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public String portFolioAdd(Board board) {
 		board.setbWriter("user");

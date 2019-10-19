@@ -1,21 +1,12 @@
 package kr.ac.kopo.service;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartRequest;
 
 import kr.ac.kopo.dao.PortFolioDao;
 import kr.ac.kopo.model.Board;
@@ -58,58 +49,7 @@ public class PortFolioServiceImpl implements PortFolioService {
 	public void delete(Board board) {
 		dao.delete(board);
 	}
-	
-	//ck에디터 이미지 업로드 처리부분
-	@Override
-	public void imgUp(HttpServletRequest request, HttpServletResponse response, MultipartFile upload) {
-		OutputStream out = null;
-        PrintWriter printWriter = null;
-		//문자타입설정
-		response.setCharacterEncoding("utf-8");
-		//파라미터로 전달되는 response 객체의 한글설정
-		response.setContentType("text/html; charset=utf-8");
-		
-		try {
-			//업로드한 이름
-			String fileName = upload.getOriginalFilename();
-			//파일을 바이트 배열로 변환시킨다.
-			byte[] bytes = upload.getBytes();
-			//이미지 업로드할 경로(배포디렉토리로 설정)
-//			String uploadPath = "D:\\workspace-spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\myPortfolio\\WEB-INF\\views\\images\\";
-			String uploadPath = "C:\\img\\";
-			out = new FileOutputStream(new File(uploadPath + fileName));
-	
-			//write메소드의 인수로 파일의 총 바이트를 준다.
-			//지정된 바이트를 출력하기 위해 사용한다.
-			out.write(bytes);
-			
-			//클라이언트에 결과를 표시해준다.
-			String callback = request.getParameter("CKEditorFuncNum");
-			
-			//서버에서 클라이언트로 텍스트를 전송한다.(자바스크립트를 실행시킨다.)
-			printWriter = response.getWriter();
-			//파일url 경로 (출력하는 경로) servlet-context.xml에서 저장 경로를 img로 맵핑한 후 여기서 가져오도록 했다.
-			String fileUrl = request.getContextPath() + "/img/" + fileName;
-			//화면에 출력
-			printWriter.println("<script>window.parent.CKEDITOR.tools.callFunction(" + callback + ",'" + fileUrl + "','이미지가 업로드되었습니다 !')" + "</script>");
-			//flush 메서드를 호출하면 buffer의 내용이 파일에 쓰여준다.
-			printWriter.flush();
-		}catch(IOException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(out != null) {
-					out.close();
-				}
-				if(printWriter != null) {
-					printWriter.close();
-				}
-			}catch (IOException e) {
-				e.printStackTrace();
-			}//finally 내부 try catch 끝
-		}//finally 끝
-	}//imgUp 끝
-	
+
 	//가공데이터 삭제
 	@Override
 	public void init() {
@@ -144,72 +84,54 @@ public class PortFolioServiceImpl implements PortFolioService {
 		}
 		
 	}
-	
-//	@Override
-//	public String restore(ArrayList<MultipartFile> request) {
-//			String path = ""; 
-//			
-//			if(request.size() > 0) {
-//				System.out.println("restoreServiceImpl - 실행");
-//				path = ((HttpServletRequest) request).getSession().getServletContext().getRealPath("/upload");
-//				System.out.println(path + "path");
-//				File fileDir = new File(path); 
-//				if (!fileDir.exists())
-//					fileDir.mkdirs();
-//				
-//				long time = System.currentTimeMillis(); 
-//				
-//				for (MultipartFile mf : request) { 
-//					String originFileName = mf.getOriginalFilename(); // 원본 파일 명 
-//					String saveFileName = String.format("%d_%s", time, originFileName); 
-//					try { // 파일생성 
-//						mf.transferTo(new File(path, saveFileName));
-//					} catch (Exception e) {
-//						e.printStackTrace();
-//					}
-//					
-//				}
-//				return path;
-//			}else {
-//				System.out.println("파일 사이즈 0");
-//				return "등록된 파일이 없습니다.";
-//			}
-//	}
+
 	//첨부파일 파일 업로드
 	@Override
-	public List<String> uploadFile(FileUpload uploadForm) {
+	public List<String> uploadFile(FileUpload uploadForm, int savePoint) {
 		//파일 목록 얻어오기
 		List<MultipartFile> files = uploadForm.getFiles();
-		//첨부파일 저장 경로
-		String path = "C:\\upload\\";
-		System.out.println(files.get(0).getOriginalFilename());
 		List<String> fileNames = new ArrayList<String>();
-		if(null != files && files.size() > 0) {
-			//파일 저장할 폴더 생성
-			File fileDir = new File(path); 
-			if (!fileDir.exists())
-				fileDir.mkdirs();
-			long time = System.currentTimeMillis(); 
-			//파일있는만큼 전부 반복
+
+		//저장버튼 클릭시 실제저장 아니면 이름만 화면출력..
+		if(savePoint == 1) {
+			//첨부파일 저장 경로
+			String path = "C:\\portfolio\\";
+			System.out.println(files.get(0).getOriginalFilename());
+			
+			if(null != files && files.size() > 0) {
+				//파일 저장할 폴더 생성
+				File fileDir = new File(path); 
+				if (!fileDir.exists())
+					fileDir.mkdirs();
+				long time = System.currentTimeMillis(); 
+				//파일있는만큼 전부 반복
+				for (MultipartFile mf : files) {
+					//파일명 출력
+					String fileName = mf.getOriginalFilename();
+					fileNames.add(fileName);
+					//원본 파일 명
+					String originFileName = mf.getOriginalFilename(); 
+					//저장할 파일명
+					String saveFileName = String.format("%d_%s", time, originFileName); 
+					try { // 파일생성 
+						mf.transferTo(new File(path, saveFileName));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				return fileNames;
+			}else {
+				fileNames.add("등록된 포트폴리오가 없습니다.");
+				return fileNames;
+			}
+		}else {
 			for (MultipartFile mf : files) {
 				//파일명 출력
 				String fileName = mf.getOriginalFilename();
 				fileNames.add(fileName);
-				//원본 파일 명
-				String originFileName = mf.getOriginalFilename(); 
-				//저장할 파일명
-				String saveFileName = String.format("%d_%s", time, originFileName); 
-				try { // 파일생성 
-					mf.transferTo(new File(path, saveFileName));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 			}
-
-			return fileNames;
-		}else {
-			fileNames.add("등록된 포트폴리오가 없습니다.");
 			return fileNames;
 		}
+
 	}
 }

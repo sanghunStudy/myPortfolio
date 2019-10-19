@@ -15,31 +15,44 @@
  */
 
 $(function(){
+	var savePoint;
 	$("#fileSearch").click(function(){
 		   $("#fileInput").trigger("click");
+	});
+	//저장버튼 클릭시
+	$("#submitBtn").click(function(){
+		savePoint = 1;
+		save(savePoint);
 	});
 }());
 
 $("#fileInput").change(function(e){
-	save();
+	savePoint = 0;
+	save(savePoint);
 });
 
-function save(){
-	var fileName = $("input[type=file]")[0].files[0].name;
-	
+function save(savePoint){
+	var files = $("#fileInput").prop("files");
 	  
-	if(fileName == ""){
-		alert("hwp 파일을 선택 해주세요");
+	if(files.length <= 0){
+		alert("하나 이상의 hwp 파일을 선택 해주세요");
+		return false;
+	}else if(files.length > 4){
+		alert("첨부파일은 최대 4개까지 등록 가능합니다.");
+		return false;
 	}else{
 		var ajaxData = new FormData();
-		var files = $("#fileInput").prop("files");
+		var fileName = $("input[type=file]")[0].files[0].name;		
+		//파일 길이만큼 반복
 		for(var i=0; i < files.length; i++){
 			if(chkFileType(files[i].name,files[i].size)){
-			    return false;
-			}else{
+				//유효성 통과시 파일정보를 form에 담아준다.
 				ajaxData.append("files["+i+"]",files[i]);
+			}else{
+				return false;
 			}
 		}
+		ajaxData.append("savePoint",savePoint);
 		$("input[name='fileNameInput']").val(fileName);
 		$.ajax({ 
 			type: "POST", 
@@ -69,16 +82,14 @@ var maxSize = 5242880; // 5MB
 //파일 타입 체크
 function chkFileType(fileName,fileSize){
     var fileFormat = fileName.split(".");
-    
     if(fileSize > maxSize){
     	alert("5MB이상의 파일은 업로드가 불가능합니다.");
     	return false;
     }
-    
-    if(regex.test(fileName)){
-    	alert("hwp 파일만 업로드 가능 합니다.");
+    if(regex.test(fileName) || fileFormat.indexOf("hwp") != 1){
+    	alert("hwp 파일만 업로드가 가능 합니다.");
     	 return false;
-    }else if (fileFormat.indexOf("hwp") != 1) {
+    }else if (fileFormat.indexOf("hwp") == 1) {
          return true;
     }
     

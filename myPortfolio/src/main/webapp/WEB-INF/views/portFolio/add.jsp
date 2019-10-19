@@ -91,7 +91,7 @@
 			</div>
 		</div>
 	</div>
-	<div style="margin: 20px auto;width:1200px;height: 30px;position: relative;"><input type="submit" value="작성완료" style="width:120px; margin: 0 auto; border-radius: 10px;  height: 40px; position: absolute; left: 50%;transform:translate(-50%, 0);background-color: #ff0061;border: 1px #fec194;color: white;cursor: pointer; font-size: 14pt;"></div>
+	<div style="margin: 20px auto;width:1200px;height: 30px;position: relative;"><input type="button" id="submitBtn" value="작성완료" style="width:120px; margin: 0 auto; border-radius: 10px;  height: 40px; position: absolute; left: 50%;transform:translate(-50%, 0);background-color: #ff0061;border: 1px #fec194;color: white;cursor: pointer; font-size: 14pt;"></div>
 </article>
 </form>
 <script src="${pageContext.request.contextPath}/resources/js/fileUp.js"></script>
