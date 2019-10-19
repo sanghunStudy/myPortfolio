@@ -47,15 +47,20 @@ public class PortFolioDaoImpl implements PortFolioDao {
 	public int total(Pager pager) {
 		return sql.selectOne("board.total",pager);
 	}
-
+	//파일 등록
 	@Override
-	public int fileInsert(Board board) {
-		return sql.insert("board.fileInsert", board);
+	public void uploadFile(Board bFile) {
+		sql.insert("board.fileInsert", bFile);
 	}
-
+	//최근 등록된 게시글 번호
 	@Override
-	public List<Board> fileUp(Board board) {
-		return sql.selectList("board.fileList",board);
+	public int maxBno() {
+		return sql.selectOne("board.maxBno");
+	}
+	//첨부파일 리스트
+	@Override
+	public List<Board> fileList(int bNo) {
+		return sql.selectList("board.fileList",bNo);
 	}
 
 }

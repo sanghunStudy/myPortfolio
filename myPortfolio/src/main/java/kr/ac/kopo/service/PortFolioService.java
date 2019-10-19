@@ -21,7 +21,9 @@ public interface PortFolioService {
 	void init();
 	//가공데이터 생성
 	void dummy();
-	
+	//파일업로드
 	List<String> uploadFile(FileUpload uploadForm, int savePoint);
+	//첨부파일 리스트
+	List<Board> fileList(int bNo);
 
 }

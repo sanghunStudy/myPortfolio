@@ -64,8 +64,7 @@ public class PortFolioController {
 	}
 	//파일업로드
 	@RequestMapping( value= "/upload", method = RequestMethod.POST )
-	public @ResponseBody List<String> upload(@ModelAttribute FileUpload uploadForm, int savePoint) {
-		
+	public @ResponseBody List<String> upload(@ModelAttribute FileUpload uploadForm, int savePoint, Board board) {
 		List<String> resultMsg = service.uploadFile(uploadForm,savePoint);
 		return resultMsg;
 	}
@@ -76,18 +75,20 @@ public class PortFolioController {
 	}
 	//포티폴리오 작성처리
 	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public String portFolioAdd(Board board) {
+	public @ResponseBody String portFolioAdd(Board board) {
+		System.out.println(board.getbTitle()+"getbTitle");
 		board.setbWriter("user");
 		service.add(board);
-		return "redirect:list";
+		return "ok";
 	}
 	//포트폴리오 상세보기
 	@RequestMapping(value="/view", method = RequestMethod.GET)
 	public String portFolioView(Model model, int bNo) {
 		
 		Board viewItem = service.view(bNo);
-		
 		model.addAttribute("viewItem", viewItem);
+		List<Board> fileList = service.fileList(bNo);
+		model.addAttribute("fileList", fileList);
 		return path+"view";
 	}
 	//포트폴리오 수정화면

@@ -18,19 +18,11 @@ public interface PortFolioDao {
 	void delete(Board board);
 	//전체 게시글 수 구하기
 	int total(Pager pager);
-
-	/**
-	 * 파일리스트
-	 * @param board
-	 * @return int
-	 */
-	int fileInsert(Board board);
-	
-	/**
-	 * 파일리스트
-	 * @param board
-	 * @return List<Board>
-	 */
-	List<Board> fileUp(Board board);
+	//파일등록
+	void uploadFile(Board bFile);
+	//최근 등록된 게시글 번호
+	int maxBno();
+	//첨부파일 리스트
+	List<Board> fileList(int bNo);
 
 }

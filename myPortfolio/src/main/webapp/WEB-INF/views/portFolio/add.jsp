@@ -14,7 +14,7 @@
 <jsp:include page="../gnb/nav.jsp" flush="true" />
 <%-- <jsp:include page="../gnb/listNav.jsp" flush="true" /> --%>
 <body>
-<form action="" method="post" id="">
+<form action="" method="post" id="addForm">
 <article class="main">
 	<div class="mainLayout">
 		<div class="mainLayoutInSindBlock InSindBlockOne" >

@@ -2,7 +2,7 @@ package kr.ac.kopo.model;
 
 public class BaseVO {
 	
-private String fNo;//첨부파일번호
+private int fNo;//첨부파일번호
 private String fOName;//첨부파일원본명
 private String fPName;//첨부파일 실제이름
 private String fVolume;//첨부파일용량
@@ -26,10 +26,12 @@ public String getPw() {
 public void setPw(String pw) {
 	this.pw = pw;
 }
-public String getfNo() {
+
+
+public int getfNo() {
 	return fNo;
 }
-public void setfNo(String fNo) {
+public void setfNo(int fNo) {
 	this.fNo = fNo;
 }
 public String getfOName() {

@@ -54,27 +54,48 @@ function save(savePoint){
 		}
 		ajaxData.append("savePoint",savePoint);
 		$("input[name='fileNameInput']").val(fileName);
-		$.ajax({ 
-			type: "POST", 
-			enctype: 'multipart/form-data',
-			url: path+'/portFolio/upload', 
-			cache: false,
-		    contentType: false,
-		    processData: false,
-		    data: ajaxData,
-		    success: function (result) {
+		if(savePoint == 1){
+			var form = $("#addForm");
+			$.ajax({
+				type:"POST",
+				url:path+"/portFolio/add",
+				data:form.serialize(),
+				success:function(res){
+					if(res === "ok")
+						fileUploadAjax(ajaxData);
+				}
+			});
+		}else{
+			fileUploadAjax(ajaxData);
+		}
+
+	}
+}
+
+function fileUploadAjax(ajaxData){
+	$.ajax({ 
+		type: "POST", 
+		enctype: 'multipart/form-data',
+		url: path+'/portFolio/upload', 
+		cache: false,
+	    contentType: false,
+	    processData: false,
+	    data: ajaxData,
+	    success: function (result) {
+	    	console.log(result);
+	    	if(result == "ok"){
+	    		location.href=path+"/portFolio/list";
+	    	}else{
 		    	var fileNameList = "";
-//				console.log(result);
 				$.each(result,function(key,val){
 					fileNameList += "<p>"+val+"</p><a>삭제</a>";
 				});
 				$("#fileList").html(fileNameList);
-			}, error: function (e) { 
-				console.log(e);
-				console.log(e.status);
-			} });
-
-	}
+	    	}
+		}, error: function (e) { 
+			console.log(e);
+			console.log(e.status);
+		} });
 }
 
 var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); //파일 확장자 정규식 

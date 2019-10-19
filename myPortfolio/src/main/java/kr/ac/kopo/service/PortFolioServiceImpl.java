@@ -97,7 +97,6 @@ public class PortFolioServiceImpl implements PortFolioService {
 			//첨부파일 저장 경로
 			String path = "C:\\portfolio\\";
 			System.out.println(files.get(0).getOriginalFilename());
-			
 			if(null != files && files.size() > 0) {
 				//파일 저장할 폴더 생성
 				File fileDir = new File(path); 
@@ -106,9 +105,7 @@ public class PortFolioServiceImpl implements PortFolioService {
 				long time = System.currentTimeMillis(); 
 				//파일있는만큼 전부 반복
 				for (MultipartFile mf : files) {
-					//파일명 출력
-					String fileName = mf.getOriginalFilename();
-					fileNames.add(fileName);
+					Board bFile = new Board();
 					//원본 파일 명
 					String originFileName = mf.getOriginalFilename(); 
 					//저장할 파일명
@@ -118,7 +115,18 @@ public class PortFolioServiceImpl implements PortFolioService {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+					//selectKey가 다른세션이라 그런지 먹히지 않아서 편법
+					int bNo = dao.maxBno();
+					
+					bFile.setbNo(bNo);
+					bFile.setfOName(originFileName);//원본 파일명
+					bFile.setfPName(saveFileName);//실제 파일명
+					bFile.setfVolume(Long.toString(mf.getSize()));//파일 크기
+					bFile.setfDir(path);//파일 경로
+					bFile.setfType(mf.getContentType());//파일 타입
+					dao.uploadFile(bFile);
 				}
+				fileNames.add("ok");
 				return fileNames;
 			}else {
 				fileNames.add("등록된 포트폴리오가 없습니다.");
@@ -133,5 +141,10 @@ public class PortFolioServiceImpl implements PortFolioService {
 			return fileNames;
 		}
 
+	}
+	//첨부파일 리스트
+	@Override
+	public List<Board> fileList(int bNo) {
+		return dao.fileList(bNo);
 	}
 }

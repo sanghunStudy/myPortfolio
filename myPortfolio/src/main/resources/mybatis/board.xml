@@ -63,6 +63,9 @@
 	
 <!-- 	포트폴리오 등록 시퀀스를 이용해서 자동증가 1부터 1씩증가  -->
 	<insert id="add">
+	<selectKey keyProperty="bNo" resultType="int" order="BEFORE">
+		SELECT BNO_SEQ.NEXTVAL FROM DUAL
+	</selectKey>
 	INSERT INTO BOARD( /*add board.xml*/
 		B_NO,
 		B_TITLE,
@@ -79,7 +82,7 @@
 		B_LANGUAGE,
 		B_ETC
 	)VALUES(
-		bno_seq.nextval,
+		#{bNo},
 		#{bTitle},
 		#{bWriter},
 		#{bSummary},
@@ -159,7 +162,11 @@
 		WHERE
 			B_NO = #{bNo}
 	</update>
-	
+<!-- 	최근 등록된 게시글 번호 -->
+	<select id="maxBno" resultType="Integer">
+	SELECT MAX(B_NO) FROM BOARD
+	</select>
+<!-- 	첨부파일 등록 -->
 	<insert id="fileInsert">
 		INSERT INTO B_FILE( /*fileInsert board.xml*/
 			B_NO,
@@ -173,7 +180,7 @@
 			F_DIR
 		)VALUES(
 			#{bNo},
-			FNO_SEQ.NEXT_VAL,
+			FNO_SEQ.NEXTVAL,
 			#{fOName},
 			#{fPName},
 			#{fVolume},
@@ -183,7 +190,7 @@
 			#{fDir}
 		)
 	</insert>
-	
+<!-- 	첨부파일 리스트 -->
 	<select id="fileList" resultType="Board">
 		SELECT	/*fileList board.xml*/
 			F_NO, 
