@@ -6,32 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>포트폴리오 등록</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/add.css" type="text/css">
 <style>
-*{outline:none;}
-.portfolio-add-content-box{width:1024px; margin:0 auto; padding-top:200px;}
-.main {width:1200px;height: 940px;margin:0 auto;}
-.mainLayout {margin:0px 25px; height: 840px;display:grid;grid-template-columns: 750px 400px;}
-.mainLayoutInSindBlock {height: 720px; display: inline-block;position: relative;top:100px;}
-.InSindBlockOne {width:690px; background-color: #eee;padding: 10px;}
-.InSindBlockTwo {width:330px;}
-.Attachments,.setting {background-color: #eee;height: 345px;padding: 10px;}
-.Attachments {margin-bottom:10px;}
-.insideTitle {color:#333;font-size: 18pt;font-family: "NanumSquare";font-weight: bold;margin-top: 10px;}
-.insideTitleInput { width:645px;padding: 5px 5px;margin-top: 10px;}
-.insideTitleTwo {margin-top:30px;}
-.insideDateAndGest {display: grid;grid-template-columns: 334px 2px 334px;height:150px;margin-top: 10px;}
-.inside {width:100px;padding: 5px;margin-top:10px;}
-.left {margin-right: 10px;}
-.right {margin-left: 10px;}
-.insideTitleInputGest {width:100px;}
-.Gest {padding: 0px 20px;}
-.purpose {height: 200px; padding:10px;}
-.fileUpload {color:#333;font-size: 12pt;font-family: "NanumSquare";height: 30px;width: 100%;}
-.fileUploadLayout input{height: 30px;}
-.layoutEveyone {margin-bottom: 20px;}
-.settingCheckBox {display: grid; grid-template-rows: 70px;}
-.checkBox {height: 15px; padding: 5px;width:200px;}
-.content-footer {height: 30px !important;}
+
 </style>
 </head>
 <jsp:include page="../gnb/listNav.jsp" flush="true" />
@@ -96,7 +73,7 @@
 				</span>
 			</div>
 			<div id="fileList">
-			
+			<p style="color: #aaa;">복수파일을 선택하고 싶을 시</p><p style="color:#aaa;font-size: 8pt;"> 찾아보기 > 파일선택자에서 Crtl키를 누르고 </p><p style="color:#aaa;font-size: 8pt;"> 중복 선택하시면 됩니다.</p>
 			</div>
 			</div>
 			</div>
@@ -114,7 +91,7 @@
 			</div>
 		</div>
 	</div>
-	<div style="margin: 20px auto;width:1200px;height: 30px;position: relative;"><input type="submit" value="작성완료" style="width:70px; margin: 0 auto;height: 30px;position: absolute; left: 50%;transform:translate(-50%, 0);background-color: #ff0061;border: 1px #fec194;color: white;cursor: pointer; "></div>
+	<div style="margin: 20px auto;width:1200px;height: 30px;position: relative;"><input type="submit" value="작성완료" style="width:120px; margin: 0 auto; border-radius: 10px;  height: 40px; position: absolute; left: 50%;transform:translate(-50%, 0);background-color: #ff0061;border: 1px #fec194;color: white;cursor: pointer; font-size: 14pt;"></div>
 </article>
 </form>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>

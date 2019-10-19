@@ -41,13 +41,13 @@
 	.content-section-two{height:1000px; background-image:url('${pageContext.request.contextPath}/resources/img/background-2462431_1920.jpg'); background-repeat:no-repeat; background-position:top center; background-size:cover; background-attachment:fixed;}
 	.content-section-three{height:1000px; background-repeat:no-repeat; background-position:bottom center; background-size:cover; background-attachment:fixed;background-image:url('${pageContext.request.contextPath}/resources/img/ocean-3605547_1920.jpg');}
 	.content-section-four{height:100px;}
-	.content-title{padding-top:100px;position:relative;top:350px;width: 1100px; margin: 0 auto; background: black;}
-	.content-sub-title {padding-bottom:100px;position:relative; top:350px; margin: 0 auto;width: 1100px; background-color: black;-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;}
+	.content-title{padding-top:10px;position:relative;top:350px;width: 1100px; margin: 0 auto; background: black;}
+	.content-sub-title {padding-bottom:50px;position:relative; top:270px; margin: 0 auto;width: 1100px; background-color: black;-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;}
 	.content-title p{font-size:58pt; color:#fff; font-weight:680; line-height: 1.6em;font-family: "NanumMyeongjo";}
 	.content-sub-title p{font-size:24pt; color:#ffff; line-height: 1.5em;font-family: "NanumMyeongjo"}
-	.my-skill{text-align: center; font-size: 14pt; font-weight: 560; line-height: 45px; margin: 0 auto;
+	.my-skill{text-align: center; font-size: 14pt; font-weight: 560; margin: 0 auto;
     width: 1200px; position: relative; top: 300px; opacity: 0.6;background:black;    padding: 50px; }
-	.my-skill div{display:inline-block; padding-top:50px; margin:0px 100px;}
+	.my-skill div{display:inline-block; margin:0px 100px;}
 	.my-skill h6{font-size:1.2em; color: #82B1C8;}
 	.my-skill span{margin-right: 12px; color: #939DAB;}
 	.my-skill h5,.my-portfolio h5{font-size: 2.0em;}
@@ -81,7 +81,7 @@
 			</section>
 			<section class="content-section content-section-two section1_item">
 			<div class="my-skill animated animatedFadeInUp fadeInUp">
-			<h5><span>01</span>활용 가능 기술</h5>
+			<h5 style="margin: 0;"><span>01</span>활용 가능 기술</h5>
 				<div>
 					<h6>LANGUAGE</h6>
 					<p>HTML5</p>

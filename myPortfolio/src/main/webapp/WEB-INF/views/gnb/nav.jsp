@@ -9,6 +9,7 @@
 <style>
 /* 	body{background: black;} */
 	/* 네비 */
+	body {margin:0px;}
 	.nav-menu{width: 100%; height:80px;opacity:0.9; list-style-type: none; margin:0 auto; padding:0; text-align:center; overflow: hidden; background-color: #191919; position: fixed; z-index:999;}
 	.nav-menu li{display:inline-block;width:280px;position: relative; }
 	.nav-menu li a{display:block; height: 40px;padding: 20px 0;color:white; text-align:center; text-decoration: none;font-size:24pt; font-family: "NanumSquare";}
