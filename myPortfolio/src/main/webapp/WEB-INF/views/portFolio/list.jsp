@@ -22,7 +22,8 @@
 	background-image: url("${pageContext.request.contextPath}/resources/img/search.png");position: relative;bottom: 1px;background-repeat: no-repeat;background-position: 10px center;background-size: 30px 30px;cursor: pointer;}
 </style>
 </head>
-<jsp:include page="../gnb/listNav.jsp" flush="true" />
+<jsp:include page="../gnb/nav.jsp" flush="true" />
+<%-- <jsp:include page="../gnb/listNav.jsp" flush="true" /> --%>
 <body>
 <div class="portfolio-list-contents-box">
 	<div>
