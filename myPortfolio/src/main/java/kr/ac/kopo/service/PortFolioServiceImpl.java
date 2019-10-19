@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 
 import kr.ac.kopo.dao.PortFolioDao;
 import kr.ac.kopo.model.Board;
@@ -140,5 +143,48 @@ public class PortFolioServiceImpl implements PortFolioService {
 		}
 		
 	}
-
+	//리스트
+	@Override
+	public List<Board> fileUp(Board board) {
+		int boardCnt =	dao.fileInsert(board);
+		if(boardCnt != 0) {
+			return dao.fileUp(board);	
+		}else {
+			return null;			
+		}
+	}
+	
+	// 리눅스 기준으로 파일 경로를 작성 ( 루트 경로인 /으로 시작한다. )
+		// 윈도우라면 workspace의 드라이브를 파악하여 JVM이 알아서 처리해준다.
+	// 따라서 workspace가 C드라이브에 있다면 C드라이브에 upload 폴더를 생성해 놓아야 한다.
+	@Override
+	public String restore(ArrayList<MultipartFile> request) {
+			String path = ""; 
+			
+			if(request.size() > 0) {
+				System.out.println("restoreServiceImpl - 실행");
+				path = ((HttpServletRequest) request).getSession().getServletContext().getRealPath("/upload");
+				System.out.println(path + "path");
+				File fileDir = new File(path); 
+				if (!fileDir.exists())
+					fileDir.mkdirs();
+				
+				long time = System.currentTimeMillis(); 
+				
+				for (MultipartFile mf : request) { 
+					String originFileName = mf.getOriginalFilename(); // 원본 파일 명 
+					String saveFileName = String.format("%d_%s", time, originFileName); 
+					try { // 파일생성 
+						mf.transferTo(new File(path, saveFileName));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+				}
+				return path;
+			}else {
+				System.out.println("파일 사이즈 0");
+				return "등록된 파일이 없습니다.";
+			}
+	}
 }

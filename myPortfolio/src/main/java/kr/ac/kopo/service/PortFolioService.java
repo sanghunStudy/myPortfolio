@@ -1,11 +1,13 @@
 package kr.ac.kopo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.ac.kopo.model.Board;
 import kr.ac.kopo.utill.Pager;
@@ -27,5 +29,9 @@ public interface PortFolioService {
 	void init();
 	//가공데이터 생성
 	void dummy();
+	
+	List<Board> fileUp(Board board);
+	
+	String restore(ArrayList<MultipartFile> files);
 
 }

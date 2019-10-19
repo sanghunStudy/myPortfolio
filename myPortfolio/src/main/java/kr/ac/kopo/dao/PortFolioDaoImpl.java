@@ -48,4 +48,14 @@ public class PortFolioDaoImpl implements PortFolioDao {
 		return sql.selectOne("board.total",pager);
 	}
 
+	@Override
+	public int fileInsert(Board board) {
+		return sql.insert("board.fileInsert", board);
+	}
+
+	@Override
+	public List<Board> fileUp(Board board) {
+		return sql.selectList("board.fileList",board);
+	}
+
 }

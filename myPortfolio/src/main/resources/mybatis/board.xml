@@ -77,4 +77,34 @@
 		b_update_writer = #{bUpdateWriter}
 		where b_no = #{bNo}
 	</update>
+	
+	<insert id="fileInsert">
+		INSERT INTO B_FILE(
+			B_NO,
+			F_NO,
+			F_NAME,
+			F_VOLUME,
+			F_TYPE,
+			F_DELETE
+		)
+		VALUES(
+			#{groupId},
+			FNO_SEQ.NEXT_VAL,
+			#{fName},
+			#{fVolume},
+			'N'
+		)
+	</insert>
+	
+	<select id="fileList" resultType="Board">
+		SELECT 
+			F_NAME,
+			F_VOLUME,
+			F_TYPE 
+			FROM 
+			BOARD b 
+		JOIN 
+			B_FILE bf 
+		ON b.B_NO = #{bNo}
+	</select>
 </mapper>

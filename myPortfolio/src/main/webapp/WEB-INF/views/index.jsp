@@ -55,7 +55,6 @@
 	.my-portfolio span{margin-right: 12px; color: #939DAB;}
 	.my-portfolio div{margin:150px 30px; display:inline-block; width:300px; height:400px; background-color:#fff;}
 	</style>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
 </head>
 <jsp:include page="./gnb/nav.jsp" flush="true" />

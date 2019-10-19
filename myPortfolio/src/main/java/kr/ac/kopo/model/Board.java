@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import kr.ac.kopo.controller.PortFolioController;
 
-public class Board {
+public class Board extends BaseVO{
 	int bNo;//게시글번호
 	String bTitle;//제목
 	String bWriter;//작성자

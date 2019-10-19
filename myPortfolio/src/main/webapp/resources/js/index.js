@@ -1,3 +1,18 @@
+/**
+ * @Name   : index.js
+ * @Description : 스크롤페이지
+ * @Modification Information
+ * @
+ * @ 수정일        수정자    수정내용
+ * @ ----------    ------    ---------------------------
+ * @ 2019.10.18    배상훈    최초 생성
+ *
+ * @author 배상훈
+ * @since 2019.10.18
+ * @version 1.0
+ * @see
+ *
+ */
 
 var scrollEvent = false;
 var count = 0;
@@ -16,7 +31,6 @@ function go(){
     var sb = $(".section0").height();
 
     if(m > 1 && scrollEvent == false && count >= 1){
-//        console.log(count+"<<<<<count");
         scrollEvent = true;
         count--;
         $("html,body").stop().animate({scrollTop:sb*count},
@@ -25,7 +39,6 @@ function go(){
         })
 
     }else if(m<1 && scrollEvent == false && count <3){
-//        console.log(count+"<<<<<<else if count");
         scrollEvent = true;
         count++;
         $("html,body").stop().animate({scrollTop:sb*count},

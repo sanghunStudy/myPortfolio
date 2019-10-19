@@ -16,8 +16,8 @@
 	.pagination-box li {display:inline-block; margin:5px 2px;}
 	.pagination-box a{color:#fff;}
 	.current-page a{color:red;}
-	.tag {height: 40px; padding: 5px 10px; }
-	.search {height: 34px;}
+	.tag {height: 40px; padding: 5px 10px; border:none;}
+	.search {height: 34px; border:none;}
 	.submit {height: 40px;width:60px;border-top-right-radius: 20px 20px; border-bottom-right-radius: 20px 20px;border:0px; background-color: #ff0061; color:white; font-family: "NanumSquare";
 	background-image: url("${pageContext.request.contextPath}/resources/img/search.png");position: relative;bottom: 1px;background-repeat: no-repeat;background-position: 10px center;background-size: 30px 30px;cursor: pointer;}
 </style>
@@ -36,7 +36,6 @@
 				</select>
 				<input name="keyword" class="search" type="text" value=""/>
 				<input type="submit" class="submit" value=" ">
-				</input>
 			</form>
 		</div>
 	</div>

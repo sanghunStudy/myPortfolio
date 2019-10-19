@@ -19,4 +19,18 @@ public interface PortFolioDao {
 	//전체 게시글 수 구하기
 	int total(Pager pager);
 
+	/**
+	 * 파일리스트
+	 * @param board
+	 * @return int
+	 */
+	int fileInsert(Board board);
+	
+	/**
+	 * 파일리스트
+	 * @param board
+	 * @return List<Board>
+	 */
+	List<Board> fileUp(Board board);
+
 }
