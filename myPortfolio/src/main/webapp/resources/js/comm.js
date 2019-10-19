@@ -24,6 +24,6 @@
 
         if(window.location.pathname != '/kopo/'){
         	//이 부분에 css추가하면됨
-        	$(".nav-menu").css("background","linear-gradient( to left, #fec194, #ff0061 )");
+        	$(".nav-menu").css("background","linear-gradient( to left, #fec194, #ff0061 )").css("opacity","0.9");
         }
         });
