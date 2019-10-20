@@ -33,8 +33,15 @@
 		<p>Login</p>
 		<div class="PopupBr"></div>
 		<div class="PopupBrLoing">
-			<input type="text" class="ID">
-			<input type="password" class="password">
+			<form action="login" method="post">
+				<input type="text" class="ID" name="id" autocomplete=”off” placeholder="ID">
+				<input type="password" class="password" name="pw" placeholder="Password">
+				<input type="submit" class="submit" value="로그인">
+			</form>
+		<div class="PopupBr PopupBr2"></div>
+		<div class="Explanation">
+			<img src="${pageContext.request.contextPath}/resources/img/Logo.png">
+		</div>
 		</div>
 	</div>
 </body>

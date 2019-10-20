@@ -2,6 +2,7 @@
 
 /* 	body{background: black;} */
 	/* ³×ºñ */
+	* {outline: none;}
 	body {margin:0px;}
 	.nav-menu{width: 100%; height:80px;opacity:0.9; list-style-type: none; margin:0 auto; padding:0; text-align:center; overflow: hidden; background-color: #191919; position: fixed; z-index:999;}
 	.nav-menu li{display:inline-block;width:280px;position: relative; }
@@ -45,15 +46,49 @@
 	}
 	.PopupBrLoing {
 	 height: 300px;
+	 overflow: hidden;
 	}
 	.ID,.password {
 		height: 32px;
-		padding: 5px 5px 5px 50px;
+		padding: 5px 5px 5px 60px;
 		width: 300px;
+		border: 1px solid;
+   		 border-color: #444;
+   		 transition:0.2s;
+	}
+	.ID:focus {
+   		 border-color: #ff0060;
+   		 transition:0.2s;
+	}
+	
+	.password:focus{
+   		 border-color: #ff0060;
+   		 transition:0.2s;
 	}
 	.ID {
-		margin: 100px 500px 5px 230px;
+		margin: 60px 500px 5px 230px;
 	}
 	.password {
 		margin: 5px 500px 10px 230px;
 	}
+	.submit {
+		width:365px;
+		margin: 5px 0px 10px 230px;
+		background-color: #ff0060;
+		border: 0px;
+		color:white;
+		font-size: 14pt;
+		height: 47px;
+		cursor: pointer;transition:0.2s;
+		}
+		.submit:hover {
+	background-color: #fd9481;
+	transition:0.2s;
+}
+.PopupBr2 {
+	margin: 15px 0 15px 0;
+}
+.Explanation {
+	height: 90px;
+	position: relative;
+}

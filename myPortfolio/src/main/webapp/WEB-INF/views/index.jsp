@@ -72,4 +72,15 @@
 		<jsp:include page="./gnb/footer.jsp" flush="true" />
 		</article>
 </body>
+<style>
+.content-section-one{
+		background-image:url("${pageContext.request.contextPath}/resources/img/coding-924920.jpg"); 
+		}
+		.content-section-two{
+		background-image:url('${pageContext.request.contextPath}/resources/img/background-2462431_1920.jpg');
+		}
+	.content-section-three{
+	background-image:url('${pageContext.request.contextPath}/resources/img/ocean-3605547_1920.jpg');
+	}
+</style>
 </html>
