@@ -31,7 +31,7 @@
 <%-- 			${file.fPName} --%>
 <%-- 			${file.fVolume} --%>
 <%-- 			${file.fDir} --%>
-<%-- 			<a href="${pageContext.request.contextPath}/portfolio/${file.fPName}">다운로드</a> --%>
+			<a href="${pageContext.request.contextPath}/portFolio/downLoad?fNo=${file.fNo}">다운로드</a>
 			</c:forEach>
 		</c:when>
 		<c:otherwise>

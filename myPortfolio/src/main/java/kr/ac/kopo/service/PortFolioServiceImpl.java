@@ -1,6 +1,11 @@
 package kr.ac.kopo.service;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.ac.kopo.dao.PortFolioDao;
 import kr.ac.kopo.model.Board;
 import kr.ac.kopo.model.FileUpload;
+import kr.ac.kopo.utill.FileCopy;
 import kr.ac.kopo.utill.Pager;
 
 @Service
@@ -84,67 +90,119 @@ public class PortFolioServiceImpl implements PortFolioService {
 		}
 		
 	}
-
+	//첨부파일 저장 경로
+	String path = "C:\\portfolio\\temp\\";
+	File fileDir = new File(path); 
 	//첨부파일 파일 업로드
 	@Override
 	public List<String> uploadFile(FileUpload uploadForm, int savePoint) {
 		//파일 목록 얻어오기
 		List<MultipartFile> files = uploadForm.getFiles();
+		//화면에 뿌려줄 리스트
 		List<String> fileNames = new ArrayList<String>();
-
-		//저장버튼 클릭시 실제저장 아니면 이름만 화면출력..
-		if(savePoint == 1) {
-			//첨부파일 저장 경로
-			String path = "C:\\portfolio\\";
-			System.out.println(files.get(0).getOriginalFilename());
-			if(null != files && files.size() > 0) {
-				//파일 저장할 폴더 생성
-				File fileDir = new File(path); 
-				if (!fileDir.exists())
-					fileDir.mkdirs();
-				long time = System.currentTimeMillis(); 
-				//파일있는만큼 전부 반복
+		if(null != files && files.size() > 0) {
+			
+			if (!fileDir.exists())
+				fileDir.mkdirs();
+			long time = System.currentTimeMillis();
+			//첨부파일 선택시 임시폴더 저장
+			if(savePoint != 1) {
+				
 				for (MultipartFile mf : files) {
-					Board bFile = new Board();
 					//원본 파일 명
-					String originFileName = mf.getOriginalFilename(); 
-					//저장할 파일명
-					String saveFileName = String.format("%d_%s", time, originFileName); 
+					String originFileName = mf.getOriginalFilename();
 					try { // 파일생성 
-						mf.transferTo(new File(path, saveFileName));
+						mf.transferTo(new File(path, originFileName));
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+				}
+				File[] dirFileList = fileDir.listFiles();
+				for(File fileName : dirFileList){
+					fileNames.add(fileName.getName());
+				}
+			}
+			//저장버튼 클릭시 실제 저장 db insert
+			if(savePoint == 1) {
+				File[] fileList = fileDir.listFiles();
+				for(File mf : fileList) {
+					
+					FileCopy copy = new FileCopy();
+					
+					String originFileName = mf.getName();
+					String saveFileName = String.format("%d_%s", time, originFileName);
+					Board bFile = new Board();
 					//selectKey가 다른세션이라 그런지 먹히지 않아서 편법
 					int bNo = dao.maxBno();
+					String myPath = "C:\\portfolio\\"+bNo+"\\";
+					//게시글별 폴더 생성
+					File saveDir = new File(myPath); 
+					if (!saveDir.exists())
+						saveDir.mkdirs();
+					//파일 저장 및 db insert
+					try {
+						copy.nioFileCopy(path+originFileName, myPath+saveFileName);
+						
+						bFile.setbNo(bNo);
+						bFile.setfOName(originFileName);//원본 파일명
+						bFile.setfPName(saveFileName);//저장할 파일명
+						bFile.setfVolume(Long.toString(mf.length()));//파일 크기
+						bFile.setfDir(myPath);//파일 경로
+						dao.uploadFile(bFile);	
+					} catch (IllegalStateException e) {
+						e.printStackTrace();
+					}
 					
-					bFile.setbNo(bNo);
-					bFile.setfOName(originFileName);//원본 파일명
-					bFile.setfPName(saveFileName);//실제 파일명
-					bFile.setfVolume(Long.toString(mf.getSize()));//파일 크기
-					bFile.setfDir(path);//파일 경로
-					bFile.setfType(mf.getContentType());//파일 타입
-					dao.uploadFile(bFile);
 				}
 				fileNames.add("ok");
-				return fileNames;
-			}else {
-				fileNames.add("등록된 포트폴리오가 없습니다.");
-				return fileNames;
+				
+				for(File file : fileList) {
+					file.delete();
+				}
 			}
+			
+			return fileNames;
+
 		}else {
-			for (MultipartFile mf : files) {
-				//파일명 출력
-				String fileName = mf.getOriginalFilename();
-				fileNames.add(fileName);
-			}
+			fileNames.add("등록된 포트폴리오가 없습니다.");
 			return fileNames;
 		}
-
 	}
 	//첨부파일 리스트
 	@Override
 	public List<Board> fileList(int bNo) {
 		return dao.fileList(bNo);
+	}
+	//첨부파일 삭제
+	@Override
+	public List<String> fileDel(String fileDel) {
+		//화면에 뿌려줄 리스트
+		List<String> fileNames = new ArrayList<String>();
+		//temp폴더 조회
+		File[] fileList = fileDir.listFiles();
+		for(File file : fileList) {
+			//입력받은 파일명과 일치하면 삭제
+			if(file.getName().equals(fileDel)) {
+				file.delete();
+			}else {
+				//아니면 화면출력
+				fileNames.add(file.getName());
+			}
+		}
+		return fileNames;
+	}
+	
+	//첨부파일 단일 조회
+	@Override
+	public Board selectFile(int fNo) {
+		return dao.selectFile(fNo);
+	}
+	//temp 폴더 삭제
+	@Override
+	public void fileListDel() {
+		File[] fileList = fileDir.listFiles();
+		for(File file : fileList) {
+			file.delete();
+		}
 	}
 }

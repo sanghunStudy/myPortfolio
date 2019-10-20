@@ -24,5 +24,7 @@ public interface PortFolioDao {
 	int maxBno();
 	//첨부파일 리스트
 	List<Board> fileList(int bNo);
+	//첨부파일 단일 조회
+	Board selectFile(int fNo);
 
 }

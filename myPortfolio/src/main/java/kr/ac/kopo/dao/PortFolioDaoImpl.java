@@ -62,5 +62,10 @@ public class PortFolioDaoImpl implements PortFolioDao {
 	public List<Board> fileList(int bNo) {
 		return sql.selectList("board.fileList",bNo);
 	}
+	//첨부파일 단일조회
+	@Override
+	public Board selectFile(int fNo) {
+		return sql.selectOne("board.selectFile",fNo);
+	}
 
 }

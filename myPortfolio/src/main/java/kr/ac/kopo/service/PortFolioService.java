@@ -25,5 +25,11 @@ public interface PortFolioService {
 	List<String> uploadFile(FileUpload uploadForm, int savePoint);
 	//첨부파일 리스트
 	List<Board> fileList(int bNo);
+	//첨부파일 삭제
+	List<String> fileDel(String fileDel);
+	//첨부파일 단일 조회
+	Board selectFile(int fNo);
+	//첨부파일 리스트 삭제
+	void fileListDel();
 
 }

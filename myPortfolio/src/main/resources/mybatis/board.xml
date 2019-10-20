@@ -174,7 +174,6 @@
 			F_O_NAME,
 			F_P_NAME,
 			F_VOLUME,
-			F_TYPE,
 			F_DELETE,
 			F_REG_TS,
 			F_DIR
@@ -184,7 +183,6 @@
 			#{fOName},
 			#{fPName},
 			#{fVolume},
-			#{fType},
 			'N',
 			SYSDATE,
 			#{fDir}
@@ -206,5 +204,18 @@
 			B.B_NO =BF.B_NO 
 		AND 
 			BF.B_NO = #{bNo}
+	</select>
+<!-- 	첨부파일 단일조회 -->
+	<select id="selectFile" resultType="Board">
+		SELECT
+			F_NO,
+			F_O_NAME,
+			F_P_NAME,
+			F_VOLUME,
+			F_DIR
+		FROM
+			B_FILE
+		WHERE
+			F_NO= #{fNo}
 	</select>
 </mapper>

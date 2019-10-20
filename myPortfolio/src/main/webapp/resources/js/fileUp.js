@@ -24,13 +24,14 @@ $(function(){
 		savePoint = 1;
 		save(savePoint);
 	});
+	
 }());
 
 $("#fileInput").change(function(e){
 	savePoint = 0;
 	save(savePoint);
 });
-
+//저장처리
 function save(savePoint){
 	var files = $("#fileInput").prop("files");
 	  
@@ -71,7 +72,7 @@ function save(savePoint){
 
 	}
 }
-
+//파일 업로드
 function fileUploadAjax(ajaxData){
 	$.ajax({ 
 		type: "POST", 
@@ -82,13 +83,13 @@ function fileUploadAjax(ajaxData){
 	    processData: false,
 	    data: ajaxData,
 	    success: function (result) {
-	    	console.log(result);
 	    	if(result == "ok"){
+	    		alert("등록이 완료 되었습니다.");
 	    		location.href=path+"/portFolio/list";
 	    	}else{
 		    	var fileNameList = "";
 				$.each(result,function(key,val){
-					fileNameList += "<p>"+val+"</p><a>삭제</a>";
+					fileNameList += "<div><p class='fileNameList'>"+val+"</p><a class='fileDel'>삭제</a></div>";
 				});
 				$("#fileList").html(fileNameList);
 	    	}
@@ -114,4 +115,38 @@ function chkFileType(fileName,fileSize){
          return true;
     }
     
+}
+//파일삭제
+$(document).on("click",".fileDel",function(){
+	var delFileName = $(this).prev().text();
+	$.ajax({
+		type: "POST", 
+		url: path+'/portFolio/fileDel',
+		data:{"delName":delFileName},
+		success:function(res){
+				var fileNameList = "";
+				$.each(res,function(key,val){
+					fileNameList += "<div><p class='fileNameList'>"+val+"</p><a class='fileDel'>삭제</a></div>";
+				});
+				$("#fileList").html(fileNameList);
+		}
+	});
+});
+//새로고침 및 화면종료시
+$(window).bind("beforeunload", function() { 
+	return fileListDel();
+});
+//뒤로가기시
+window.onhashchange = function() {
+	fileListDel();
+}
+//temp 폴더 비우기
+function fileListDel(){
+	$.ajax({
+		type:"GET",
+		url:path+"/portFolio/fileListDel",
+		success:function(res){
+			
+		}
+	});
 }

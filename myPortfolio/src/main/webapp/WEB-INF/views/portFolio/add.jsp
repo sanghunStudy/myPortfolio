@@ -5,14 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>포트폴리오 등록</title>
+<c:choose>
+	<c:when test="${vo.bNo == 0}">
+		<title>포트폴리오 등록</title>
+	</c:when>
+	<c:otherwise>
+		<title>포트폴리오 등록</title>
+	</c:otherwise>
+</c:choose>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/add.css" type="text/css">
-<style>
-
-</style>
 </head>
 <jsp:include page="../gnb/nav.jsp" flush="true" />
-<%-- <jsp:include page="../gnb/listNav.jsp" flush="true" /> --%>
 <body>
 <form action="" method="post" id="addForm">
 <article class="main">

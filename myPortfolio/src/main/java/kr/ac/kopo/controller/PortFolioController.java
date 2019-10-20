@@ -1,9 +1,9 @@
 package kr.ac.kopo.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,18 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.model.Board;
 import kr.ac.kopo.model.FileUpload;
 import kr.ac.kopo.service.PortFolioService;
+import kr.ac.kopo.utill.FileDown;
 import kr.ac.kopo.utill.Pager;
 
 @RequestMapping("/portFolio")
@@ -68,9 +64,35 @@ public class PortFolioController {
 		List<String> resultMsg = service.uploadFile(uploadForm,savePoint);
 		return resultMsg;
 	}
+	
+	//파일삭제
+	@RequestMapping( value= "/fileDel", method = RequestMethod.POST )
+	public @ResponseBody List<String> fileDel(String delName) {
+		List<String> resultMsg = service.fileDel(delName);
+		return resultMsg;
+	}
+	//파일 다운로드
+	@RequestMapping("/downLoad")
+	public void fileDown(int fNo,HttpServletRequest req,HttpServletResponse res) {
+	    try {
+	    	Board fileVo = service.selectFile(fNo);
+	    	FileDown down = new FileDown();
+	    	down.fileDown(req, res, fileVo.getfDir(), fileVo.getfPName(), fileVo.getfOName());
+	    	
+	     } catch (Exception e) {
+	         e.printStackTrace();
+	     }
+	}
+	
+	@RequestMapping("/fileListDel")
+	public void fileListDel() {
+		service.fileListDel();
+	}
 	//포트폴리오 작성 화면
 	@RequestMapping(value="/add", method = RequestMethod.GET)
-	public String portFolioAdd() {
+	public String portFolioAdd(Model model, int bNo) {
+		Board vo = service.view(bNo);
+		model.addAttribute("vo",vo);
 		return path+"add";
 	}
 	//포티폴리오 작성처리
