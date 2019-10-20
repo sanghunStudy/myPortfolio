@@ -1,0 +1,59 @@
+@charset "EUC-KR";
+
+/* 	body{background: black;} */
+	/* 네비 */
+	body {margin:0px;}
+	.nav-menu{width: 100%; height:80px;opacity:0.9; list-style-type: none; margin:0 auto; padding:0; text-align:center; overflow: hidden; background-color: #191919; position: fixed; z-index:999;}
+	.nav-menu li{display:inline-block;width:280px;position: relative; }
+	.nav-menu li a{display:block; height: 40px;padding: 20px 0;color:white; text-align:center; text-decoration: none;font-size:24pt; font-family: "NanumSquare";}
+	#title-span{font-size:8px;}
+	.nav-menu li a img{height:80px;}
+	/* 마스크 뛰우기 */
+	.loginPopup {
+	cursor: pointer;
+	}
+	.backGroundPopup {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	opacity: 0.8;
+	z-index: 1000;
+	display: none
+	}
+	.Popup {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform:translate(-50%, -50%);
+	background-color: white;
+	height: 450px;
+	width: 800px;
+	padding:10px;
+	display: none;
+	z-index: 1001;
+	}
+	.Popup p {
+	font-size: 20pt;
+	color: #777;
+	padding-top: 25px;
+	}
+	.PopupBr {
+	height: 3px;
+	background-color: #777;
+	margin-top:5px;
+	}
+	.PopupBrLoing {
+	 height: 300px;
+	}
+	.ID,.password {
+		height: 32px;
+		padding: 5px 5px 5px 50px;
+		width: 300px;
+	}
+	.ID {
+		margin: 100px 500px 5px 230px;
+	}
+	.password {
+		margin: 5px 500px 10px 230px;
+	}

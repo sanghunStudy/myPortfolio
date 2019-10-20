@@ -6,17 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>nav</title>
-<style>
-/* 	body{background: black;} */
-	/* 네비 */
-	body {margin:0px;}
-	.nav-menu{width: 100%; height:80px;opacity:0.9; list-style-type: none; margin:0 auto; padding:0; text-align:center; overflow: hidden; background-color: #191919; position: fixed; z-index:999;}
-	.nav-menu li{display:inline-block;width:280px;position: relative; }
-	.nav-menu li a{display:block; height: 40px;padding: 20px 0;color:white; text-align:center; text-decoration: none;font-size:24pt; font-family: "NanumSquare";}
-	#title-span{font-size:8px;}
-	.nav-menu li a img{height:80px;}
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/nav.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/comm/css/gnb.css">
+<script src="${pageContext.request.contextPath}/resources/comm/js/nav.js"></script>
+
 </head>
 <body>
 <nav>
@@ -26,7 +19,7 @@
 			<li style="bottom: 33px;"><a href="${pageContext.request.contextPath}/portFolio/add">Create</a></li>
 			<c:choose>
 				<c:when test="${sessionScope.user eq null}">
-				<li style="bottom: 33px;"><a href="${pageContext.request.contextPath}/login">Login</a></li>
+				<li style="bottom: 33px;" class="loginPopup"><a>Login</a></li>
 				</c:when>
 				<c:otherwise>
 				<li style="bottom: 33px;"><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
@@ -34,6 +27,16 @@
 			</c:choose>
 		</ul>
 	</nav>
+	<div class="backGroundPopup">
+	</div>
+	<div class="Popup">
+		<p>Login</p>
+		<div class="PopupBr"></div>
+		<div class="PopupBrLoing">
+			<input type="text" class="ID">
+			<input type="password" class="password">
+		</div>
+	</div>
 </body>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -42,4 +45,27 @@
 	var path = "${pageContext.request.contextPath}";
 </script>
 <script src="${pageContext.request.contextPath}/resources/comm/js/gnb.js"></script>
+<script type="text/javascript">
+$('.loginPopup').click(function() {
+	$('.backGroundPopup').css({
+	    "display": "block"
+	});
+	
+	$('.Popup').css({
+	    "display": "block"
+	});
+});
+</script>
+
+<style>
+.ID {
+
+		background-image: url("${pageContext.request.contextPath}/resources/img/idicon.png");
+		background-repeat: no-repeat;
+	}
+.password {
+		background-image: url("${pageContext.request.contextPath}/resources/img/passicon.png");
+		background-repeat: no-repeat;
+}
+</style>
 </html>
