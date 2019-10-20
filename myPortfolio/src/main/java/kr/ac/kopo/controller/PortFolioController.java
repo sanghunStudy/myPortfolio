@@ -91,16 +91,29 @@ public class PortFolioController {
 	//포트폴리오 작성 화면
 	@RequestMapping(value="/add", method = RequestMethod.GET)
 	public String portFolioAdd(Model model, int bNo) {
-		Board vo = service.view(bNo);
-		model.addAttribute("vo",vo);
+		Board vo = new Board();
+		if(bNo != 0) {
+			vo = service.view(bNo);
+			List<Board> fileList = service.fileList(bNo);
+			model.addAttribute("fileList", fileList);
+			model.addAttribute("vo",vo);	
+		}else {
+			vo.setbNo(0);
+			model.addAttribute("vo",vo);	
+		}
+		
 		return path+"add";
 	}
 	//포티폴리오 작성처리
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public @ResponseBody String portFolioAdd(Board board) {
-		System.out.println(board.getbTitle()+"getbTitle");
-		board.setbWriter("user");
-		service.add(board);
+		board.setUserId("user");
+		//수정일때
+		if(board.getbNo() != 0) {
+			service.update(board);
+		}else {
+			service.add(board);	
+		}
 		return "ok";
 	}
 	//포트폴리오 상세보기

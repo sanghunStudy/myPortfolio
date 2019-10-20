@@ -50,7 +50,7 @@
 				B_NO,
 				B_TITLE,
 				B_WRITER,
-				B_REG_TS
+				TO_CHAR(B_REG_TS,'YYYY-MM-DD') AS B_REG_TS
 			FROM
 				BOARD
 			WHERE B_DELETE = 'N'
@@ -84,7 +84,7 @@
 	)VALUES(
 		#{bNo},
 		#{bTitle},
-		#{bWriter},
+		#{userId},
 		#{bSummary},
 		SYSDATE,
 		'N',
@@ -115,9 +115,9 @@
 			B_TITLE,
 			B_WRITER,
 			B_SUMMARY,
-			B_REG_TS,
-			B_START_TS,
-			B_END_TS,
+            TO_CHAR(B_REG_TS,'YYYY-MM-DD') AS B_REG_TS,
+			TO_CHAR(B_START_TS,'YYYY-MM-DD') AS B_START_TS,
+            TO_CHAR(B_END_TS,'YYYY-MM-DD') AS B_END_TS,
 			B_USER_CNT,
 			B_PURPOSE,
 			B_DB,
@@ -136,7 +136,7 @@
 			BOARD
 		SET
 			B_TITLE = #{bTitle},
-			B_WRITER = #{bWriter},
+			B_WRITER = #{userId},
 			B_SUMMARY = #{bSummary},
 			B_START_TS = #{bStartTs},
 			B_END_TS = #{bEndTs},

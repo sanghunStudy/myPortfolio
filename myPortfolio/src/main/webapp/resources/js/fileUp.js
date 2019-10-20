@@ -24,7 +24,6 @@ $(function(){
 		savePoint = 1;
 		save(savePoint);
 	});
-	
 }());
 
 $("#fileInput").change(function(e){

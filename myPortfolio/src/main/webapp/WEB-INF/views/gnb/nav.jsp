@@ -8,8 +8,6 @@
 <title>nav</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/nav.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/comm/css/gnb.css">
-<script src="${pageContext.request.contextPath}/resources/comm/js/nav.js"></script>
-
 </head>
 <body>
 <nav>
@@ -51,8 +49,10 @@
 <script>
 	var path = "${pageContext.request.contextPath}";
 </script>
+<script src="${pageContext.request.contextPath}/resources/comm/js/nav.js"></script>
 <script src="${pageContext.request.contextPath}/resources/comm/js/gnb.js"></script>
 <script type="text/javascript">
+var bNo = "${vo.bNo}";
 $('.loginPopup').click(function() {
 	$('.backGroundPopup').css({
 	    "display": "block"

@@ -38,7 +38,7 @@
 		<p>등록된 파일이 없습니다.</p>
 		</c:otherwise>
 	</c:choose>
-	<a href="${pageContext.request.contextPath}/portFolio/update?bNo=${viewItem.bNo}">수정하기</a>
+	<a href="${pageContext.request.contextPath}/portFolio/add?bNo=${viewItem.bNo}">수정하기</a>
 	<a href="${pageContext.request.contextPath}/portFolio/delete?bNo=${viewItem.bNo}">삭제하기</a>
 </body>
 </html>
