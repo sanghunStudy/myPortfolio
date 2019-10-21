@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,8 @@
 </head>
 <jsp:include page="../gnb/nav.jsp" flush="true" />
 <body>
-<form action="" method="post" id="addForm">
+<form:form action="" method="post" id="addForm" commandName="board">
+<form:errors path="*" cssClass="error"/>
 <input type="hidden" name="bNo" value="${vo.bNo}">
 <article class="main">
 	<div class="mainLayout">
@@ -27,6 +29,7 @@
 				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
 			</p>
 			<input name="bTitle" class="insideTitleInput" value="${vo.bTitle}"/>
+			<form:errors path="bTitle" cssClass="error"/>
 			<p class="insideTitle insideTitleTwo">
 				프로젝트 개요
 				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
@@ -120,8 +123,9 @@
 	</div>
 	<div style="margin: 20px auto;width:1200px;height: 30px;position: relative;"><input type="button" id="submitBtn" value="작성완료" style="width:120px; margin: 0 auto; border-radius: 10px;  height: 40px; position: absolute; left: 50%;transform:translate(-50%, 0);background-color: #ff0061;border: 1px #fec194;color: white;cursor: pointer; font-size: 14pt;"></div>
 </article>
-</form>
+</form:form>
 <script>
+var seUser = "${user}";
 var bStartTs = "${vo.bStartTs}";
 var bEndTs = "${vo.bEndTs}";
 </script>

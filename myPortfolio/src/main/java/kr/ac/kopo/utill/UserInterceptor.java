@@ -13,10 +13,9 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		
 		HttpSession session = request.getSession();//파라미터에서 받는 request에서 세션을 얻어온다.
-		
-		
 				if(session.getAttribute("user") == null) {
-					response.sendRedirect("/kopo/login");
+					PrintAlert.printAlert("로그인 후 이용하세요.", request, response);
+//					response.sendRedirect("/");
 					return false;
 				}
 					return true;

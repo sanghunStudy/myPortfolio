@@ -1,12 +1,17 @@
 package kr.ac.kopo.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import kr.ac.kopo.controller.PortFolioController;
-
 public class Board extends BaseVO{
 	int bNo;//프로젝트번호
+	@NotNull(message="제목을 입력해 주세요")
+	@NotEmpty(message="제목을 입력해 주세요")
+	@Size(min=2,message="최소 2자리이상 입력해주세요")
 	String bTitle;//제목
 	String bWriter;//작성자
 	String bSummary;//개요

@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -104,17 +106,28 @@ public class PortFolioController {
 		
 		return path+"add";
 	}
+	
+	
 	//포티폴리오 작성처리
 	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public @ResponseBody String portFolioAdd(Board board) {
-		board.setUserId("user");
-		//수정일때
-		if(board.getbNo() != 0) {
-			service.update(board);
+//	@ResponseBody
+	public  String portFolioAdd(Model model,@Valid Board board,Errors errors) {
+		if(errors.hasErrors()) {
+			System.out.println("에러");
+			return path+"add";
 		}else {
-			service.add(board);	
+			System.out.println("에러가 없을때");
+			//수정일때
+			if(board.getbNo() != 0) {
+				board.setUserId("user");
+//				service.update(board);
+			}else {
+//				service.add(board);	
+			}
+			return "ok";
 		}
-		return "ok";
+		
+//		return "ok";
 	}
 	//포트폴리오 상세보기
 	@RequestMapping(value="/view", method = RequestMethod.GET)

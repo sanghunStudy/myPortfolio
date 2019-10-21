@@ -21,8 +21,12 @@ $(function(){
 	});
 	//저장버튼 클릭시
 	$("#submitBtn").click(function(){
-		savePoint = 1;
-		save(savePoint);
+		if("" != seUser){
+			savePoint = 1;
+			save(savePoint);	
+		}else{
+			alert("로그인 후 이용해 주세요");
+		}
 	});
 }());
 
@@ -61,8 +65,11 @@ function save(savePoint){
 				url:path+"/portFolio/add",
 				data:form.serialize(),
 				success:function(res){
-					if(res === "ok")
+					if(res === "ok"){
 						fileUploadAjax(ajaxData);
+					}else{
+						alert("필수 항목을 모두 입력해주세요");
+					}
 				}
 			});
 		}else{
@@ -82,6 +89,7 @@ function fileUploadAjax(ajaxData){
 	    processData: false,
 	    data: ajaxData,
 	    success: function (result) {
+	    	console.log(result);	
 	    	if(result == "ok"){
 	    		alert("등록이 완료 되었습니다.");
 	    		location.href=path+"/portFolio/list";
