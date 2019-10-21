@@ -8,13 +8,15 @@
 <title>포트폴리오 목록</title>
 <style>
 	*{outline: none;}
+	a {color: black;}
 	body{background:white;}
-	.portfolio-list-contents-box{width:1200px; padding-top:120px; margin:0 auto; text-align:center;height: 735px;}
-	.portfolio-list-contents-box .list-contents{width:600px; height:50px; margin:10px auto; background:#fff;}
-	.pagination-box{text-align: center; margin:0 auto;}
-	.pagination-box ul {width:500px; margin:0 auto;}
-	.pagination-box li {display:inline-block; margin:5px 2px;}
-	.pagination-box a{color:#fff;}
+	.portfolio-list-contents-box{width:1200px; padding-top:120px; margin:0 auto; text-align:center;height: 735px;position: relative;}
+	.portfolio-list-contents-box .list-contents{width:800px; padding: 5px 0;;height:30px; margin:10px auto; background:#fff; border-bottom:1px solid gray;   display: grid;
+    grid-template-columns: 50px 650px 100px;}
+	.pagination-box{text-align: center; margin:0 auto;position: absolute;bottom: 50px; width: 1200px;}
+	.pagination-box ul {width:500px; margin:0 auto;color:#333;}
+	.pagination-box li {display:inline-block; margin:5px 2px;color:#333;margin: 0 10px;}
+	.pagination-box a{color:#fff;color:#333;}
 	.current-page a{color:red;}
 	.tag {height: 40px; padding: 5px 10px; border:none;}
 	.search {height: 34px; border:none;}
@@ -28,6 +30,7 @@
 	background-size: 30px 30px;cursor: pointer;}
 	.submitLayout {
 		border:1px solid gray; width:400px; height: 40px;margin: 0 auto;
+		margin-bottom: 50px;
 	}
 	.submitLayout form {display: grid;grid-template-columns:100px 300px 60px;}
 </style>

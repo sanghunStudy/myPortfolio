@@ -2,7 +2,7 @@ package kr.ac.kopo.utill;
 
 public class Pager {
 	//페이지당 보여줄 개수
-	int perPage = 4; 
+	int perPage = 10; 
 	//총 게시물 수
 	float total = 0; 
 	//db에 입력되는 page번호(소수로 입력할 경우를 대비하여 정수로 변환 시킨값)
