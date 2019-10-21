@@ -9,8 +9,8 @@
 <style>
 	*{outline: none;}
 	body{background:white;}
-	.portfolio-list-contents-box{width:1200px; padding-top:120px; margin:0 auto; text-align:center;}
-	.portfolio-list-contents-box .list-contents{width:350px; height:350px; margin:30px 30px; display:inline-block; background:#fff;}
+	.portfolio-list-contents-box{width:1200px; padding-top:120px; margin:0 auto; text-align:center;height: 735px;}
+	.portfolio-list-contents-box .list-contents{width:600px; height:50px; margin:10px auto; background:#fff;}
 	.pagination-box{text-align: center; margin:0 auto;}
 	.pagination-box ul {width:500px; margin:0 auto;}
 	.pagination-box li {display:inline-block; margin:5px 2px;}
@@ -18,8 +18,7 @@
 	.current-page a{color:red;}
 	.tag {height: 40px; padding: 5px 10px; border:none;}
 	.search {height: 34px; border:none;}
-	.submit {height: 40px;width: 60px;border-top-right-radius: 20px 20px; 
-	border-bottom-right-radius: 20px 20px;border:0px; 
+	.submit {height: 30px;width: 60px;  
 	background-color: #ff0061; 
 	color:white; 
 	font-family: "NanumSquare";
@@ -28,9 +27,9 @@
 	background-position: 10px center;
 	background-size: 30px 30px;cursor: pointer;}
 	.submitLayout {
-		border:1px solid gray; width:500px; height: 50px;margin: 0 auto;
+		border:1px solid gray; width:400px; height: 40px;margin: 0 auto;
 	}
-	.submitLayout form {display: grid;grid-template-columns:60px 300px 60px;}
+	.submitLayout form {display: grid;grid-template-columns:100px 300px 60px;}
 </style>
 </head>
 <jsp:include page="../gnb/nav.jsp" flush="true" />
@@ -47,7 +46,7 @@
 					<option value="3">작성자</option>
 				</select>
 				<input name="keyword" class="search" type="text" value=""/>
-				<input type="submit" class="submit" style="width:60px;" value="">
+				<input type="submit" class="submit" style="width:60px;margin: 0px;height: 42px;" value="">
 			</form>
 		</div>
 	</div>
