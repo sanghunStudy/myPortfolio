@@ -1,0 +1,29 @@
+@charset "EUC-KR";
+*{outline:none;}
+.portfolio-add-content-box{width:1024px; margin:0 auto; padding-top:200px;}
+.main {width:1200px;height: 940px;margin:0 auto;}
+.mainLayout {margin:0px 25px; height: 840px;display:grid;grid-template-columns: 750px 400px;}
+.mainLayoutInSindBlock {height: 680px; display: inline-block;position: relative;top:100px;}
+.InSindBlockOne {width:690px; background-color: #f9f9f9;padding: 10px;box-shadow: 2px 3px 13px -8px;}
+.InSindBlockTwo {width:330px;}
+.Attachments,.setting {background-color: #f9f9f9;padding: 10px;box-shadow: 2px 3px 13px -8px;}
+.Attachments {margin-bottom:10px; height: 305px;}
+.insideTitle {color:#333;font-size: 18pt;font-family: "NanumSquare";font-weight: bold;margin-top: 10px;}
+.insideTitleInput { width:645px;padding: 5px 5px;margin-top: 10px;}
+.insideTitleTwo {margin-top:30px;}
+.insideDateAndGest {display: grid;grid-template-columns: 334px 2px 334px;height:150px;margin-top: 10px;}
+.inside {width:100px;padding: 5px;margin-top:10px;}
+.left {margin-right: 10px;}
+.right {margin-left: 10px;}
+.setting {height: 345px;}
+.insideTitleInputGest {width:100px;}
+.Gest {padding: 0px 20px;}
+.purpose {height: 200px; padding:10px;}
+.fileUpload {color:#333;font-size: 12pt;font-family: "NanumSquare";height: 30px;width: 100%;}
+.fileUploadLayout input{height: 30px;}
+.layoutEveyone {margin-bottom: 5px;}
+.settingCheckBox {display: grid; grid-template-rows: 70px;}
+.checkBox {height: 15px; padding: 5px;width:200px;}
+.content-footer {height: 30px !important;}
+#fileSearch {border: 0px; background: #ff0061;margin: 10px 0;height: 30px;width: 120px;border-radius: 5px;color: white;cursor: pointer;transition:0.2s;}
+#fileSearch:hover {background: #be0048;transition:0.2s;}

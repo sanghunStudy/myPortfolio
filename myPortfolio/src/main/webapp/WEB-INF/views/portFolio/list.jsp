@@ -6,33 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>포트폴리오 목록</title>
-<style>
-	*{outline: none;}
-	a {color: black;}
-	body{background:white;}
-	.portfolio-list-contents-box{width:1200px; padding-top:120px; margin:0 auto; text-align:center;height: 735px;position: relative;}
-	.portfolio-list-contents-box .list-contents{width:800px; padding: 5px 0;;height:30px; margin:10px auto; background:#fff; border-bottom:1px solid gray;   display: grid;
-    grid-template-columns: 50px 650px 100px;}
-	.pagination-box{text-align: center; margin:0 auto;position: absolute;bottom: 50px; width: 1200px;}
-	.pagination-box ul {width:500px; margin:0 auto;color:#333;}
-	.pagination-box li {display:inline-block; margin:5px 2px;color:#333;margin: 0 10px;}
-	.pagination-box a{color:#fff;color:#333;}
-	.current-page a{color:red;}
-	.tag {height: 40px; padding: 5px 10px; border:none;}
-	.search {height: 34px; border:none;}
-	.submit {height: 30px;width: 60px;  
-	background-color: #ff0061; 
-	color:white; 
-	font-family: "NanumSquare";
-	background-image: url("${pageContext.request.contextPath}/resources/img/search.png");position: relative;bottom: 1px;
-	background-repeat: no-repeat;
-	background-position: 10px center;
-	background-size: 30px 30px;cursor: pointer;}
-	.submitLayout {
-		border:1px solid gray; width:400px; height: 40px;margin: 0 auto;
-		margin-bottom: 50px;
-	}
-	.submitLayout form {display: grid;grid-template-columns:100px 300px 60px;}
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/list.css" type="text/css">
+<style type="text/css">
+	.submit {
+	background-image: url("${pageContext.request.contextPath}/resources/img/search.png");
 </style>
 </head>
 <jsp:include page="../gnb/nav.jsp" flush="true" />
