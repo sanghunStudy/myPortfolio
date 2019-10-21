@@ -38,7 +38,6 @@
 			</form>
 		<div class="PopupBr PopupBr2"></div>
 		<div class="Explanation">
-			<img src="${pageContext.request.contextPath}/resources/img/Logo.png">
 		</div>
 		</div>
 	</div>

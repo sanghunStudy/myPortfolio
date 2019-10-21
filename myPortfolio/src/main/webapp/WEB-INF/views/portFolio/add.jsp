@@ -23,6 +23,7 @@
 	<div class="mainLayout">
 		<div class="mainLayoutInSindBlock InSindBlockOne" >
 			<p class="insideTitle">
+				프로젝트 제목
 				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
 			</p>
 			<input name="bTitle" class="insideTitleInput" value="${vo.bTitle}"/>

@@ -54,11 +54,11 @@
 			FROM
 				BOARD
 			WHERE B_DELETE = 'N'
-		<include refid="search"></include> ORDER BY B_NO) SUB)
+ 		<include refid="search"></include> ORDER BY B_NO) SUB) 
 		
-		<![CDATA[
-			WHERE ROW_NUM > ((#{dbPage} - 1) * #{perPage}) AND ROW_NUM <= (#{dbPage} * #{perPage})
-		]]>
+		<![CDATA[ 
+ 			WHERE ROW_NUM > ((#{dbPage} - 1) * #{perPage}) AND ROW_NUM <= (#{dbPage} * #{perPage}) 
+		]]> 
 	</select>
 	
 <!-- 	포트폴리오 등록 시퀀스를 이용해서 자동증가 1부터 1씩증가  -->

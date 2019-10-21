@@ -18,8 +18,19 @@
 	.current-page a{color:red;}
 	.tag {height: 40px; padding: 5px 10px; border:none;}
 	.search {height: 34px; border:none;}
-	.submit {height: 40px;width:60px;border-top-right-radius: 20px 20px; border-bottom-right-radius: 20px 20px;border:0px; background-color: #ff0061; color:white; font-family: "NanumSquare";
-	background-image: url("${pageContext.request.contextPath}/resources/img/search.png");position: relative;bottom: 1px;background-repeat: no-repeat;background-position: 10px center;background-size: 30px 30px;cursor: pointer;}
+	.submit {height: 40px;width: 60px;border-top-right-radius: 20px 20px; 
+	border-bottom-right-radius: 20px 20px;border:0px; 
+	background-color: #ff0061; 
+	color:white; 
+	font-family: "NanumSquare";
+	background-image: url("${pageContext.request.contextPath}/resources/img/search.png");position: relative;bottom: 1px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	background-size: 30px 30px;cursor: pointer;}
+	.submitLayout {
+		border:1px solid gray; width:500px; height: 50px;margin: 0 auto;
+	}
+	.submitLayout form {display: grid;grid-template-columns:60px 300px 60px;}
 </style>
 </head>
 <jsp:include page="../gnb/nav.jsp" flush="true" />
@@ -27,7 +38,7 @@
 <body>
 <div class="portfolio-list-contents-box">
 	<div>
-		<div>
+		<div class="submitLayout">
 <!-- 			action이 없기 때문에 현재와 같은 주소로 이동 (list)-->
 			<form method="get" action="">
 				<select name="searchMode" class="tag" >
@@ -36,7 +47,7 @@
 					<option value="3">작성자</option>
 				</select>
 				<input name="keyword" class="search" type="text" value=""/>
-				<input type="submit" class="submit" value=" ">
+				<input type="submit" class="submit" style="width:60px;" value="">
 			</form>
 		</div>
 	</div>

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>하단</title>
 <style>
-.content-footer{color: white; text-align: center; font-size: 0.8em; background:black;}
+.content-footer{color: white; text-align: center; font-size: 0.8em; background:black;line-height: 30px;}
 </style>
 </head>
 <body>
