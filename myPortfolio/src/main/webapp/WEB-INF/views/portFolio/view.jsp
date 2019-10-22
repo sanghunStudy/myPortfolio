@@ -62,6 +62,7 @@
 							  <c:forEach var="fVo" items="${fileList}">
 							  	<div>
 							  		<p class="fileNameList">${fVo.fOName}</p>
+							  		<a href="${pageContext.request.contextPath}/portFolio/downLoad?fNo=${fVo.fNo}">다운로드</a>
 							 	 </div>
 							</c:forEach>
                 </span>
