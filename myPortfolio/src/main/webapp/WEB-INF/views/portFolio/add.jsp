@@ -26,31 +26,31 @@
 		<div class="mainLayoutInSindBlock InSindBlockOne" >
 			<p class="insideTitle">
 				프로젝트 제목
-				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+				<span class="insideSpan">필수사항</span>
 			</p>
-			<input name="bTitle" class="insideTitleInput" value="${vo.bTitle}"/>
+			<input name="bTitle" class="insideTitleInput" value="${vo.bTitle}" autocomplete=”off” />
 			<form:errors path="bTitle" cssClass="error"/>
 			<p class="insideTitle insideTitleTwo">
 				프로젝트 개요
-				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+				<span class="insideSpan">필수사항</span>
 			</p>
-			<input name="bSummary" class="insideTitleInput"  value="${vo.bSummary}"/>
+			<input name="bSummary" class="insideTitleInput" autocomplete=”off” value="${vo.bSummary}"/>
 			<div class="insideDateAndGest">
 				<div class="date">
 					<p class="insideTitle insideTitleTwo">프로젝트 기간
-					<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+					<span class="insideSpan">필수사항</span>
 					</p>
-					<div style="margin-top: 15px;">
+					<div class="dateMargin">
 						<c:choose>
 							<c:when test="${vo.bNo != 0}">
-								<input name="bStartTs" class="inside left bStartTs"  value="${vo.bStartTs}" readonly="readonly">
+								<input name="bStartTs" class="inside left bStartTs"  value="${vo.bStartTs}" readonly="readonly" autocomplete=”off”>
 					  			~  
-								<input name="bEndTs" class="inside right bEndTs"  value="${vo.bEndTs}" readonly="readonly">
+								<input name="bEndTs" class="inside right left bEndTs"  value="${vo.bEndTs}" readonly="readonly" autocomplete=”off”>
 							</c:when>
 							<c:otherwise>
-								<input name="bStartTs" class="inside left datePic" readonly="readonly">
+								<input name="bStartTs" class="inside left datePic" readonly="readonly" autocomplete=”off”>
 					  			~  
-								<input name="bEndTs" class="inside right datePic" readonly="readonly">							
+								<input name="bEndTs" class="inside right left datePic" readonly="readonly" autocomplete=”off”>							
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -59,26 +59,26 @@
 				<div class="Gest">
 				<p class="insideTitle insideTitleTwo">
 				프로젝트 인원
-				<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+				<span class="insideSpan">필수사항</span>
 				</p>
-				<div style="margin-top: 15px;">
-				<input name="bUserCnt" class="insideTitleInputGest inside"  value="${vo.bUserCnt}"/>
+				<div class="dateMargin">
+				<input type="number"  min="1" autocomplete=”off” name="bUserCnt" class="insideTitleInputGest inside"  value="${vo.bUserCnt}"/>
 				</div>
 				</div>
 			</div>
 			<div>
 			<p class="insideTitle insideTitleTwo">
 				프로젝트 목적
-			<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+			<span class="insideSpan">필수사항</span>
 			</p>
 			<textarea name="bPurpose" class="insideTitleInput purpose"> ${vo.bPurpose}</textarea>
 			</div>
 		</div>
 		<div class="mainLayoutInSindBlock InSindBlockTwo" >
 			<div class="Attachments">
-			<p class="insideTitle insideTitleTwo" style="margin: 10px 0 15px 0;">
+			<p class="insideTitle insideTitleTwo insideTitleMargin">
 				첨부파일
-			<span style="font-size: 10pt;color:#ff0061;">필수사항</span>
+			<span class="insideSpan">필수사항</span>
 			</p>
 			<div>
 			<div class="layoutEveyone">
@@ -103,25 +103,27 @@
                 </span>
 			</div>
 			<div id="fileList">
-			<p style="color: #aaa;">복수파일을 선택하고 싶을 시</p><p style="color:#aaa;font-size: 8pt;"> 찾아보기 > 파일선택자에서 Crtl키를 누르고 </p><p style="color:#aaa;font-size: 8pt;"> 중복 선택하시면 됩니다.</p>
+			<p class="fileListPOne">복수파일을 선택하고 싶을 시</p><p class="fileListPTwo"> 찾아보기 > 파일선택자에서 Crtl키를 누르고 </p><p style="color:#aaa;font-size: 8pt;"> 중복 선택하시면 됩니다.</p>
 			</div>
 			</div>
 			</div>
 			<div class="setting">
-			<p class="insideTitle insideTitleTwo" style="margin: 10px 0 15px 0;">
+			<p class="insideTitle insideTitleTwo insideTitleMargin">
 				개발환경
-			<span style="font-size: 10pt;color:#ff0061;">선택사항</span>
+			<span class="insideSpan">선택사항</span>
 			</p>
 			<div class="settingCheckBox">
-				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">DB</P><input type="text"  name="bDb"   value="${vo.bDb}" style="width:90%;padding: 5px;margin-top: 10px;" /></div>
-				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">Tool</P><input type="text"  name="bTool"  value="${vo.bTool}" style="width:90%;padding: 5px;margin-top: 10px;" /></div>
-				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">Language</P><input type="text"  name="bLanguage"  value="${vo.bLanguage}" style="width:90%;padding: 5px;margin-top: 10px;" /></div>
-				<div style="margin-bottom: 10px;"><P style="color:#444;font-size: 12pt;font-weight: bold;">Etc</P><input type="text"  name="bEtc"  value="${vo.bEtc}" style="width:90%;padding: 5px;margin-top: 10px;" /></div>
+				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">DB		</P>		<input type="text"  name="bDb"   value="${vo.bDb}" class="settingCheckBoxInputTag"/></div>
+				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">Tool		</P>		<input type="text"  name="bTool"  value="${vo.bTool}" class="settingCheckBoxInputTag" /></div>
+				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">Language	</P>		<input type="text"  name="bLanguage"  value="${vo.bLanguage}" class="settingCheckBoxInputTag" /></div>
+				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">Etc		</P>		<input type="text"  name="bEtc"  value="${vo.bEtc}" class="settingCheckBoxInputTag" /></div>
 			</div>
 			</div>
 		</div>
 	</div>
-	<div style="margin: 20px auto;width:1200px;height: 30px;position: relative;"><input type="button" id="submitBtn" value="작성완료" style="width:120px; margin: 0 auto; border-radius: 10px;  height: 40px; position: absolute; left: 50%;transform:translate(-50%, 0);background-color: #ff0061;border: 1px #fec194;color: white;cursor: pointer; font-size: 14pt;"></div>
+	<div style="margin: 20px auto;width:1200px;height: 30px;position: relative;">
+		<input type="button" id="submitBtn" value="작성완료" >
+	</div>
 </article>
 </form:form>
 <script>

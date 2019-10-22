@@ -27,3 +27,16 @@
 .content-footer {height: 30px !important;}
 #fileSearch {border: 0px; background: #ff0061;margin: 10px 0;height: 30px;width: 120px;border-radius: 5px;color: white;cursor: pointer;transition:0.2s;}
 #fileSearch:hover {background: #be0048;transition:0.2s;}
+.insideSpan {font-size: 10pt;color:#ff0061;}
+.settingCheckBoxInPTag {
+	color:#444;font-size: 12pt;font-weight: bold;
+}
+.settingCheckBoxInputTag {
+	width:90%;padding: 5px;margin-top: 10px;
+}
+.settingCheckBoxinDiv {margin-bottom: 10px;}
+#submitBtn {width:120px; margin: 0 auto; border-radius: 10px;  height: 40px; position: absolute; left: 50%;transform:translate(-50%, 0);background-color: #ff0061;border: 1px #fec194;color: white;cursor: pointer; font-size: 14pt;}
+.insideTitleMargin {margin: 10px 0 15px 0;}
+.dateMargin {margin-top: 15px;}
+.fileListPOne {color: #aaa;}
+.fileListPTwo {color:#aaa;font-size: 8pt;}
