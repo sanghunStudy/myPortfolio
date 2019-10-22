@@ -204,10 +204,13 @@
 			B.B_NO =BF.B_NO 
 		AND 
 			BF.B_NO = #{bNo}
+		AND
+			BF.F_DELETE = 'N'
 	</select>
 <!-- 	첨부파일 단일조회 -->
 	<select id="selectFile" resultType="Board">
 		SELECT
+			B_NO,
 			F_NO,
 			F_O_NAME,
 			F_P_NAME,
@@ -217,5 +220,25 @@
 			B_FILE
 		WHERE
 			F_NO= #{fNo}
+		AND
+			F_DELETE = 'N'
 	</select>
+<!-- 첨부파일삭제 -->
+	<update id="deleteFile">
+	UPDATE 
+		B_FILE
+	SET
+		F_DELETE = 'Y'
+	WHERE
+		F_NO = #{fNo}	
+	</update>
+<!-- 	게시글 삭제시 첨부파일삭제 -->
+	<update id="fileDeleteAll">
+	UPDATE 
+		B_FILE
+	SET
+		F_DELETE = 'Y'
+	WHERE
+		B_NO = #{bNo}	
+	</update>
 </mapper>

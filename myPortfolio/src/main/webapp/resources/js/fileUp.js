@@ -57,6 +57,7 @@ function save(savePoint){
 			}
 		}
 		ajaxData.append("savePoint",savePoint);
+		ajaxData.append("bNo",$("#bNo").val());
 		$("input[name='fileNameInput']").val(fileName);
 		if(savePoint == 1){
 			var form = $("#addForm");
@@ -89,7 +90,6 @@ function fileUploadAjax(ajaxData){
 	    processData: false,
 	    data: ajaxData,
 	    success: function (result) {
-	    	console.log(result);	
 	    	if(result == "ok"){
 	    		alert("등록이 완료 되었습니다.");
 	    		location.href=path+"/portFolio/list";
@@ -124,18 +124,33 @@ function chkFileType(fileName,fileSize){
     
 }
 //파일삭제
-$(document).on("click",".fileDel",function(){
+$(document).on("click",".fileDel",function(e){
+	var fNo = $(this).attr("data-code");
+	if(fNo != ""){
+		$(this).parent("div").remove();
+	}
+	var delData = new FormData();
 	var delFileName = $(this).prev().text();
+	delData.append("delName",delFileName);
+	delData.append("fNo",fNo);
 	$.ajax({
 		type: "POST", 
 		url: path+'/portFolio/fileDel',
-		data:{"delName":delFileName},
+		data:delData,
+		cache: false,
+	    contentType: false,
+	    processData: false,
 		success:function(res){
+			if(res != "updateDel"){
 				var fileNameList = "";
 				$.each(res,function(key,val){
 					fileNameList += "<div><p class='fileNameList'>"+val+"</p><a class='fileDel'>삭제</a></div>";
 				});
 				$("#fileList").html(fileNameList);
+
+			}else{
+				alert("기존첨부 파일이 삭제 되었습니다.");
+			}
 		}
 	});
 });

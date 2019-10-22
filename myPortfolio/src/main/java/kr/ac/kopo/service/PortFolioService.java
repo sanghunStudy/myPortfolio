@@ -22,11 +22,11 @@ public interface PortFolioService {
 	//가공데이터 생성
 	void dummy();
 	//파일업로드
-	List<String> uploadFile(FileUpload uploadForm, int savePoint);
+	List<String> uploadFile(FileUpload uploadForm, int savePoint,Board board);
 	//첨부파일 리스트
 	List<Board> fileList(int bNo);
 	//첨부파일 삭제
-	List<String> fileDel(String fileDel);
+	List<String> fileDel(String fileDel, int bNo);
 	//첨부파일 단일 조회
 	Board selectFile(int fNo);
 	//첨부파일 리스트 삭제

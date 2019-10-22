@@ -54,6 +54,7 @@ public class PortFolioServiceImpl implements PortFolioService {
 	@Override
 	public void delete(Board board) {
 		dao.delete(board);
+		dao.fileDeleteAll(board);
 	}
 
 	//가공데이터 삭제
@@ -90,12 +91,14 @@ public class PortFolioServiceImpl implements PortFolioService {
 		}
 		
 	}
-	//첨부파일 저장 경로
-	String path = "C:\\portfolio\\temp\\";
-	File fileDir = new File(path); 
+	
 	//첨부파일 파일 업로드
 	@Override
-	public List<String> uploadFile(FileUpload uploadForm, int savePoint) {
+	public List<String> uploadFile(FileUpload uploadForm, int savePoint,Board board) {
+		//첨부파일 저장 경로
+		String path = "C:\\portfolio\\temp\\";
+		File fileDir = new File(path); 
+		
 		//파일 목록 얻어오기
 		List<MultipartFile> files = uploadForm.getFiles();
 		//화면에 뿌려줄 리스트
@@ -132,8 +135,13 @@ public class PortFolioServiceImpl implements PortFolioService {
 					String originFileName = mf.getName();
 					String saveFileName = String.format("%d_%s", time, originFileName);
 					Board bFile = new Board();
-					//selectKey가 다른세션이라 그런지 먹히지 않아서 편법
-					int bNo = dao.maxBno();
+					int bNo = 0;
+					
+					if(board.getbNo() > 0) {
+						bNo = board.getbNo();
+					}else {
+						bNo = dao.maxBno();
+					}
 					String myPath = "C:\\portfolio\\"+bNo+"\\";
 					//게시글별 폴더 생성
 					File saveDir = new File(myPath); 
@@ -175,20 +183,47 @@ public class PortFolioServiceImpl implements PortFolioService {
 	}
 	//첨부파일 삭제
 	@Override
-	public List<String> fileDel(String fileDel) {
+	public List<String> fileDel(String fileDel,int fNo) {
+		
 		//화면에 뿌려줄 리스트
 		List<String> fileNames = new ArrayList<String>();
-		//temp폴더 조회
-		File[] fileList = fileDir.listFiles();
-		for(File file : fileList) {
-			//입력받은 파일명과 일치하면 삭제
-			if(file.getName().equals(fileDel)) {
-				file.delete();
-			}else {
-				//아니면 화면출력
-				fileNames.add(file.getName());
+		
+		//수정일때
+		if(fNo > 0) {
+			Board delItem = dao.selectFile(fNo);
+			//게시글 첨부파일 저장 경로
+			String myPath = "C:\\portfolio\\"+delItem.getbNo()+"\\";
+			File fileDirU = new File(myPath);
+			fileDel = delItem.getfPName();
+			dao.deleteFile(fNo);
+			
+			File[] fileList = fileDirU.listFiles();
+			for(File file : fileList) {
+				//입력받은 파일명과 일치하면 삭제
+				if(file.getName().equals(fileDel)) {
+					 file.delete();
+				}else {
+					
+				}
+			}
+			fileNames.add("updateDel");	
+		//일반삭제시	
+		}else {
+			//첨부파일 저장 경로
+			String path = "C:\\portfolio\\temp\\";
+			File fileDir = new File(path); 
+			//temp폴더 조회
+			File[] fileList = fileDir.listFiles();
+			for(File file : fileList) {
+				//입력받은 파일명과 일치하면 삭제
+				if(file.getName().equals(fileDel)) {
+					 file.delete();
+				}else {
+					fileNames.add(file.getName());	
+				}
 			}
 		}
+		
 		return fileNames;
 	}
 	
@@ -200,6 +235,9 @@ public class PortFolioServiceImpl implements PortFolioService {
 	//temp 폴더 삭제
 	@Override
 	public void fileListDel() {
+		//첨부파일 저장 경로
+		String path = "C:\\portfolio\\temp\\";
+		File fileDir = new File(path); 
 		File[] fileList = fileDir.listFiles();
 		for(File file : fileList) {
 			file.delete();

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -63,14 +64,14 @@ public class PortFolioController {
 	//파일업로드
 	@RequestMapping( value= "/upload", method = RequestMethod.POST )
 	public @ResponseBody List<String> upload(@ModelAttribute FileUpload uploadForm, int savePoint, Board board) {
-		List<String> resultMsg = service.uploadFile(uploadForm,savePoint);
+		List<String> resultMsg = service.uploadFile(uploadForm,savePoint,board);
 		return resultMsg;
 	}
 	
 	//파일삭제
 	@RequestMapping( value= "/fileDel", method = RequestMethod.POST )
-	public @ResponseBody List<String> fileDel(String delName) {
-		List<String> resultMsg = service.fileDel(delName);
+	public @ResponseBody List<String> fileDel(String delName,int fNo) {
+		List<String> resultMsg = service.fileDel(delName,fNo);
 		return resultMsg;
 	}
 	//파일 다운로드
@@ -110,19 +111,17 @@ public class PortFolioController {
 	
 	//포티폴리오 작성처리
 	@RequestMapping(value="/add", method = RequestMethod.POST)
-//	@ResponseBody
-	public  String portFolioAdd(Model model,@Valid Board board,Errors errors) {
+	@ResponseBody
+	public  String portFolioAdd(Model model,@Valid Board board,HttpSession session,Errors errors) {
 		if(errors.hasErrors()) {
-			System.out.println("에러");
 			return path+"add";
 		}else {
-			System.out.println("에러가 없을때");
+			board.setUserId(session.getAttribute("user").toString());
 			//수정일때
 			if(board.getbNo() != 0) {
-				board.setUserId("user");
-//				service.update(board);
+				service.update(board);
 			}else {
-//				service.add(board);	
+				service.add(board);	
 			}
 			return "ok";
 		}
@@ -150,16 +149,16 @@ public class PortFolioController {
 	}
 	//포트폴리오 수정처리
 	@RequestMapping(value="/update", method = RequestMethod.POST)
-	public String portFolioUpdate(Board board) {
-		board.setbUpdateWriter("test222");//세션의 아이디값 넣어줘야함
+	public String portFolioUpdate(Board board,HttpSession session) {
+		board.setbUpdateWriter(session.getAttribute("user").toString());//세션의 아이디값 넣어줘야함
 		service.update(board);
 		return "redirect:list";
 	}
 	//포트폴리오 삭제
 	@RequestMapping(value="/delete", method = RequestMethod.GET)
-	public String portFolioDelete(Board board) {
-		board.setbUpdateWriter("test222");//세션의 아이디값 넣어줘야함
+	public String portFolioDelete(Board board,HttpSession session) {
+		board.setUserId(session.getAttribute("user").toString());//세션의 아이디값 넣어줘야함
 		service.delete(board);
-		return path+"list";
+		return "redirect:list";
 	}
 }

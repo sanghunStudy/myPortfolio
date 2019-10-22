@@ -67,5 +67,17 @@ public class PortFolioDaoImpl implements PortFolioDao {
 	public Board selectFile(int fNo) {
 		return sql.selectOne("board.selectFile",fNo);
 	}
+	//첨부파일 삭제
+	@Override
+	public void deleteFile(int fNo) {
+		sql.update("board.deleteFile",fNo);
+	}
+	//게시글 삭제시 첨부파일삭제
+	@Override
+	public void fileDeleteAll(Board board) {
+		sql.update("board.fileDeleteAll",board);
+		
+	}
+	
 
 }

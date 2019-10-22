@@ -20,7 +20,7 @@
 <body>
 <form:form action="" method="post" id="addForm" commandName="board">
 <form:errors path="*" cssClass="error"/>
-<input type="hidden" name="bNo" value="${vo.bNo}">
+<input type="hidden" name="bNo" id="bNo" value="${vo.bNo}">
 <article class="main">
 	<div class="mainLayout">
 		<div class="mainLayoutInSindBlock InSindBlockOne" >
@@ -87,7 +87,7 @@
                 		<c:when test="${vo.bNo != 0}">
 							  <c:forEach var="fVo" items="${fileList}">
 							  <div>
-							  	<p class="fileNameList">${fVo.fOName}</p><a class="fileDel">삭제</a>
+							  	<p class="fileNameList">${fVo.fOName}</p><a class="fileDel" data-code="${fVo.fNo}">삭제</a>
 							  </div>
 							  </c:forEach>
                 			 <input type="file" id="fileInput" name="files[]" hidden="true" multiple="multiple"/>

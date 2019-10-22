@@ -26,5 +26,10 @@ public interface PortFolioDao {
 	List<Board> fileList(int bNo);
 	//첨부파일 단일 조회
 	Board selectFile(int fNo);
+	//첨부파일 삭제
+	void deleteFile(int fNo);
+	//게시글 삭제시 첨부파일삭제
+	void fileDeleteAll(Board board);
+	
 
 }
