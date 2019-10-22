@@ -7,7 +7,9 @@
 <title>하단</title>
 <style>
 .footerMenu {background-color: #313131;}
-.content-footer{color: #777777; text-align: center; font-size: 0.8em; background:black;line-height: 30px;background-color: #313131;}
+.content-footer{color: #777777; text-align: center; font-size: 0.8em; background:black;    line-height: 50px;
+    background-color: #313131;
+    height: 50px !important;}
 .content-section-four_indivLayout, .content-section-four_indivLayout a {
 	color: white;
 	list-style: none;
