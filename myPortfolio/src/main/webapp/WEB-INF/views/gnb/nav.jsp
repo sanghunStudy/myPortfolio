@@ -28,6 +28,7 @@
 	<div class="backGroundPopup">
 	</div>
 	<div class="Popup">
+		<div class="popupClose"><img src="${pageContext.request.contextPath}/resources/img/close.png"></div>
 		<p>Login</p>
 		<div class="PopupBr"></div>
 		<div class="PopupBrLoing">
@@ -59,6 +60,15 @@ $('.loginPopup').click(function() {
 	
 	$('.Popup').css({
 	    "display": "block"
+	});
+});
+$('.popupClose').click(function() {
+	$('.backGroundPopup').css({
+	    "display": "none"
+	});
+	
+	$('.Popup').css({
+	    "display": "none"
 	});
 });
 </script>

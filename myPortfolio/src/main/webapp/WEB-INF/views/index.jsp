@@ -67,8 +67,6 @@
 					<div></div>
 				</div>
 			</section>
-			<section class="content-section content-section-four section3_item">
-			</section>
 		<jsp:include page="./gnb/footer.jsp" flush="true" />
 		</article>
 </body>

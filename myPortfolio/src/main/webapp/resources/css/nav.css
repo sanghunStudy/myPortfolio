@@ -4,7 +4,7 @@
 	/* ³×ºñ */
 	* {outline: none;}
 	body {margin:0px;}
-	.nav-menu{width: 100%; height:80px;opacity:0.9;     box-shadow: 5px 7px 17px -5px grey;list-style-type: none; margin:0 auto; padding:0; text-align:center; overflow: hidden; background-color: #191919; position: fixed; z-index:999;}
+	.nav-menu{width: 100%; height:80px;opacity:0.9;     box-shadow: 5px 7px 17px -5px black;list-style-type: none; margin:0 auto; padding:0; text-align:center; overflow: hidden; background-color: #191919; position: fixed; z-index:999;}
 	.nav-menu li{display:inline-block;width:280px;position: relative; }
 	.nav-menu li a{display:block; height: 40px;padding: 20px 0;color:white; text-align:center; text-decoration: none;font-size:24pt; font-family: "NanumSquare";}
 	#title-span{font-size:8px;}
@@ -37,7 +37,15 @@
 	.Popup p {
 	font-size: 20pt;
 	color: #777;
-	padding-top: 25px;
+	padding-top: 25px
+	}
+	.popupClose {
+		width:25px;
+		height: 25px;
+		position: absolute;
+		top:20px;
+		right: 20px;
+		cursor: pointer;
 	}
 	.PopupBr {
 	height: 3px;
