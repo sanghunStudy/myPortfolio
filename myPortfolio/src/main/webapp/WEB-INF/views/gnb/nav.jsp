@@ -33,9 +33,9 @@
 		<div class="PopupBr"></div>
 		<div class="PopupBrLoing">
 			<form action="login" method="post">
-				<input type="text" class="ID" name="id" autocomplete=”off” placeholder="ID">
-				<input type="password" class="password" name="pw" placeholder="Password">
-				<input type="submit" class="submit" value="로그인">
+				<input type="text" class="ID" name="id" autocomplete=”off” placeholder="ID" onkeyup="enterkey();">
+				<input type="password" class="password" name="pw" placeholder="Password" onkeyup="enterkey();">
+				<input type="submit" class="submit" value="로그인" onclick="login()">
 			</form>
 		<div class="PopupBr PopupBr2"></div>
 		<div class="Explanation">
@@ -71,6 +71,18 @@ $('.popupClose').click(function() {
 	    "display": "none"
 	});
 });
+function enterkey() {
+    if (window.event.keyCode == 13) {
+
+         // 엔터키가 눌렸을 때 실행할 내용
+         login();
+    } else { 
+    	
+    	return flase;
+    }
+};
+
+
 </script>
 
 <style>

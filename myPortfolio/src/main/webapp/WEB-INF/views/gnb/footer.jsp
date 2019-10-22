@@ -14,6 +14,7 @@
 	font-size: 12pt;
 	font-family: "NanumGothic";
 }
+.content-footer p {color:#777777;}
 .content-section-four_indivLayout a {
 	margin-right: 10px;
 	color:#777777;
