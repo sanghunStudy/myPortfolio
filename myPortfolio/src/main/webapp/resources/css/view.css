@@ -22,8 +22,45 @@
 .fileUpload {color:#333;font-size: 12pt;font-family: "NanumSquare";height: 30px;width: 100%;}
 .fileUploadLayout input{height: 30px;}
 .layoutEveyone {margin-bottom: 5px;}
-.settingCheckBox {display: grid; grid-template-rows: 70px;}
+.settingCheckBox {display: grid; grid-template-rows: 70px 70px 70px 70px;}
 .checkBox {height: 15px; padding: 5px;width:200px;}
 .content-footer {height: 30px !important;}
 #fileSearch {border: 0px; background: #ff0061;margin: 10px 0;height: 30px;width: 120px;border-radius: 5px;color: white;cursor: pointer;transition:0.2s;}
 #fileSearch:hover {background: #be0048;transition:0.2s;}
+.bSummary {font-size: 14pt;font-family: "NanumSquare";padding: 20px 0;}
+.date:nth-child(n+1) {
+	font-size: 14pt; font-family:"NanumSquare";
+}
+.Gest:nth-child(n+1) {
+	font-size: 14pt; font-family:"NanumSquare";
+}
+.bPurposeP {
+	font-size: 12pt; font-family:"NanumSquare";
+	padding: 10px;
+}
+.developmentEnvironment {
+	margin: 10px 0 15px 0;
+}
+.settingCheckBoxInDivBox {
+	margin-bottom: 10px;
+}
+.settingCheckBoxInDivBox p:nth-child(2n-1) {
+	color:#444;font-size: 12pt;font-weight: bold;
+}
+.settingCheckBoxInDivBox p:nth-child(2n) {
+	padding: 10px;
+}
+.contour {
+	width:1px; 
+	background: #aaa;margin-top: 20px;
+}
+#submitBtn {
+	width:120px; margin: 0 auto; border-radius: 10px;  height: 40px;background-color: #ff0061;border: 1px #fec194;color: white;cursor: pointer; font-size: 14pt;
+}
+.submitButton{    width: 250px;;
+    height: 30px;
+    margin: 0 auto;
+    }
+.submitButtonLayOut {
+	width:1200px;
+}
