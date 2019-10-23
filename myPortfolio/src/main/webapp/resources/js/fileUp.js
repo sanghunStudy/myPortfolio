@@ -32,17 +32,31 @@ $(function(){
 
 $("#fileInput").change(function(e){
 	savePoint = 0;
-	save(savePoint);
+	var chkLeng = 0;
+	var files = $("#fileInput").prop("files");
+	var fLength = $(".fileNameList").length;
+		chkLeng = files.length + fLength;
+
+	if(chkLeng <= 0){
+		alert("하나 이상의 hwp 파일을 선택 해주세요");
+		return false;
+	}else if(chkLeng >4){
+		alert("첨부파일은 최대 4개까지  등록 가능합니다.");
+		return false;
+	}else{
+		save(savePoint);	
+	}
+	
 });
 //저장처리
 function save(savePoint){
 	var files = $("#fileInput").prop("files");
-	  
-	if(files.length <= 0){
+	var fLength = $(".fileNameList").length;
+	var chkLeng = chkLeng = files.length + fLength;
+		
+	
+	if(chkLeng <= 0){
 		alert("하나 이상의 hwp 파일을 선택 해주세요");
-		return false;
-	}else if(files.length > 4){
-		alert("첨부파일은 최대 4개까지 등록 가능합니다.");
 		return false;
 	}else{
 		var ajaxData = new FormData();
@@ -94,11 +108,11 @@ function fileUploadAjax(ajaxData){
 	    		alert("등록이 완료 되었습니다.");
 	    		location.href=path+"/portFolio/list";
 	    	}else{
-		    	var fileNameList = "";
-				$.each(result,function(key,val){
-					fileNameList += "<div><p class='fileNameList'>"+val+"</p><a class='fileDel'>삭제</a></div>";
-				});
-				$("#fileList").html(fileNameList);
+			    	var fileNameList = "";
+					$.each(result,function(key,val){
+						fileNameList += "<div><p class='fileNameList'>"+val+"</p><a class='fileDel'>삭제</a></div>";
+					});
+					$("#fileList").html(fileNameList);
 	    	}
 		}, error: function (e) { 
 			console.log(e);
@@ -125,8 +139,11 @@ function chkFileType(fileName,fileSize){
 }
 //파일삭제
 $(document).on("click",".fileDel",function(e){
-	var fNo = $(this).attr("data-code");
-	if(fNo != ""){
+	var fNo =$(this).attr("data-code");
+	if(fNo == undefined){
+		fNo = 0
+	}else{
+		fNo = $(this).attr("data-code");
 		$(this).parent("div").remove();
 	}
 	var delData = new FormData();
