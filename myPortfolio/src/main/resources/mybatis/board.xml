@@ -54,7 +54,7 @@
 			FROM
 				BOARD
 			WHERE B_DELETE = 'N'
- 		<include refid="search"></include> ORDER BY B_NO) SUB) 
+ 		<include refid="search"></include> ORDER BY B_NO DESC) SUB) 
 		
 		<![CDATA[ 
  			WHERE ROW_NUM > ((#{dbPage} - 1) * #{perPage}) AND ROW_NUM <= (#{dbPage} * #{perPage}) 
