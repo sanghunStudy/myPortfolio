@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>	
+<%= JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css" type="text/css">
 <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
 </head>
