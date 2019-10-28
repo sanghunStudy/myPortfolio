@@ -5,6 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+function maxLengthCheck(object){
+	   if (object.value.length > object.maxLength){
+	    object.value = object.value.slice(0, object.maxLength);
+	   }   
+	  }
+
+</script>
 <meta charset="UTF-8">
 <c:choose>
 	<c:when test="${vo.bNo == 0}">
@@ -62,7 +70,7 @@
 				<span class="insideSpan">필수사항</span>
 				</p>
 				<div class="dateMargin">
-				<input type="number"  min="1" autocomplete=”off” name="bUserCnt" class="insideTitleInputGest inside"  value="${vo.bUserCnt}"/>
+				<input type="number"  min="1" autocomplete=”off” name="bUserCnt" maxlength="4" oninput="maxLengthCheck(this)" class="insideTitleInputGest inside"  value="${vo.bUserCnt}"/>
 				</div>
 				</div>
 			</div>

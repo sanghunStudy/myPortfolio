@@ -54,6 +54,8 @@
 	.my-skill h5,.my-portfolio h5{font-size: 2.0em;}
 	.my-portfolio{text-align:center; font-size:15pt; padding-top:100px;}
 	.my-portfolio span{margin-right: 12px; color: #939DAB;}
-	.my-portfolio div{margin:150px 30px; display:inline-block; width:300px; height:400px; background-color:#fff;}
+	.my-portfolio div{margin:35px auto; display:block; width:1170px; height:250px;padding:15px 15px; background-color: black;opacity: 0.8;}
+	.my-portfolio div h1 {text-align: center;}
+	.my-portfolio div p {margin: 20px 0}
 	.content-section-two div h6 {margin-bottom: 20px;}
 	.content-section-two div p { margin-bottom: 20px;}
