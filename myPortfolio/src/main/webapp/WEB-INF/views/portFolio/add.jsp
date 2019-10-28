@@ -36,13 +36,13 @@ function maxLengthCheck(object){
 				프로젝트 제목
 				<span class="insideSpan">필수사항</span>
 			</p>
-			<input name="bTitle" class="insideTitleInput" value="${vo.bTitle}" autocomplete=”off” />
+			<input name="bTitle" id="bTitle" class="insideTitleInput" value="${vo.bTitle}" autocomplete=”off” />
 			<form:errors path="bTitle" cssClass="error"/>
 			<p class="insideTitle insideTitleTwo">
 				프로젝트 개요
 				<span class="insideSpan">필수사항</span>
 			</p>
-			<input name="bSummary" class="insideTitleInput" autocomplete=”off” value="${vo.bSummary}"/>
+			<input name="bSummary" id="bSummary" class="insideTitleInput" autocomplete=”off” value="${vo.bSummary}"/>
 			<div class="insideDateAndGest">
 				<div class="date">
 					<p class="insideTitle insideTitleTwo">프로젝트 기간
@@ -70,7 +70,7 @@ function maxLengthCheck(object){
 				<span class="insideSpan">필수사항</span>
 				</p>
 				<div class="dateMargin">
-				<input type="number"  min="1" autocomplete=”off” name="bUserCnt" maxlength="4" oninput="maxLengthCheck(this)" class="insideTitleInputGest inside"  value="${vo.bUserCnt}"/>
+				<input type="number"  min="1" autocomplete=”off” id="bUserCnt" name="bUserCnt" maxlength="4" oninput="maxLengthCheck(this)" class="insideTitleInputGest inside"  value="${vo.bUserCnt}"/>
 				</div>
 				</div>
 			</div>
@@ -79,7 +79,7 @@ function maxLengthCheck(object){
 				프로젝트 목적
 			<span class="insideSpan">필수사항</span>
 			</p>
-			<textarea name="bPurpose" class="insideTitleInput purpose"> ${vo.bPurpose}</textarea>
+			<textarea name="bPurpose" id="bPurpose" class="insideTitleInput purpose"> ${vo.bPurpose}</textarea>
 			</div>
 		</div>
 		<div class="mainLayoutInSindBlock InSindBlockTwo" >
@@ -121,10 +121,10 @@ function maxLengthCheck(object){
 			<span class="insideSpan">선택사항</span>
 			</p>
 			<div class="settingCheckBox">
-				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">DB		</P>		<input type="text"  name="bDb"   value="${vo.bDb}" class="settingCheckBoxInputTag"/></div>
-				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">Tool		</P>		<input type="text"  name="bTool"  value="${vo.bTool}" class="settingCheckBoxInputTag" /></div>
-				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">Language	</P>		<input type="text"  name="bLanguage"  value="${vo.bLanguage}" class="settingCheckBoxInputTag" /></div>
-				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">Etc		</P>		<input type="text"  name="bEtc"  value="${vo.bEtc}" class="settingCheckBoxInputTag" /></div>
+				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">DB		</P>		<input type="text"  name="bDb"  id="bDb" value="${vo.bDb}" class="settingCheckBoxInputTag"/></div>
+				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">Tool		</P>		<input type="text"  name="bTool" id="bTool" value="${vo.bTool}" class="settingCheckBoxInputTag" /></div>
+				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">Language	</P>		<input type="text"  name="bLanguage" id="bLanguage" value="${vo.bLanguage}" class="settingCheckBoxInputTag" /></div>
+				<div class="settingCheckBoxinDiv"><P class="settingCheckBoxInPTag">Etc		</P>		<input type="text"  name="bEtc" id="bEtc" value="${vo.bEtc}" class="settingCheckBoxInputTag" /></div>
 			</div>
 			</div>
 		</div>

@@ -21,7 +21,42 @@ $(function(){
 	});
 	//저장버튼 클릭시
 	$("#submitBtn").click(function(){
-		if("" != seUser){
+		if($("#bTitle").val() == ""){
+			alert("제목을 입력해주세요");
+			$("#bTitle").val("");
+			return false;
+		}else if($("#bTitle").val().length >=20){
+			alert("제목을 20자 이하로 입력해주세요");
+			$("#bTitle").val("");
+			return false;
+		}else if($("#bSummary").val() == ""){
+			alert("프로젝트 개요를 입력해주세요");
+			$("#bSummary").val("");
+			return false;
+		}else if($("#bSummary").val().length >=20){
+			alert("프로젝트 개요를 20자 이하로 입력해주세요");
+			$("#bSummary").val("");
+			return false;
+		}else if($("#bUserCnt").val() == ""){
+			alert("프로젝트 인원을 입력해주세요");
+			$("#bUserCnt").val("");
+			return false;
+		}else if($("#bPurpose").val().length <= 10){
+			alert("프로젝트 목적을 10자 이상 입력해주세요");
+			return false;
+		}else if($("#bDb").val().length >= 20){
+			alert("사용 데이터베이스를 20자 이하로 입력해주세요");
+			$("#bDb").val("");
+			return false;
+		}else if($("#bTool").val().length >= 10){
+			alert("사용 툴을 5자 이하로 입력해주세요");
+			$("#bTool").val("");
+			return false;
+		}else if($("#bLanguage").val().length >= 20){
+			alert("사용언어를 20자 이하로 입력해주세요");
+			$("#bLanguage").val("");
+			return false;
+		}else if("" != seUser){
 			savePoint = 1;
 			save(savePoint);	
 		}else{

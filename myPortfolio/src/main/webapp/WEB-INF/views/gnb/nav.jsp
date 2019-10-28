@@ -78,7 +78,7 @@ function enterkey() {
          login();
     } else { 
     	
-    	return flase;
+    	return false;
     }
 };
 
